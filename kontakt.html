@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt – Forvaltningsxperten</title>
+  <meta name="description" content="Ta kontakt med Forvaltningsxperten for en uforpliktende prat om eiendomsforvaltning og regnskap i Kristiansand og Agder.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect width='48' height='48' fill='%23443831'/%3E%3Cpath d='M11 39V9h20v6H17v6h10v5H17v13Z' fill='%23ece7e0'/%3E%3Cpath d='M23 23L39 39M39 23L23 39' stroke='%238e857c' stroke-width='5.5' fill='none'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<a class="skip-link" href="#innhold">Hopp til innhold</a>
+
+<header class="site-header">
+  <div class="wrap header-top">
+    <a class="brand-logo" href="index.html" aria-label="Forvaltningsxperten – til forsiden">
+      <svg class="logo-mark" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <rect width="48" height="48" fill="#443831"/>
+        <path d="M11 39V9h20v6H17v6h10v5H17v13Z" fill="#ece7e0"/>
+        <path d="M23 23L39 39M39 23L23 39" stroke="#8e857c" stroke-width="5.5" fill="none"/>
+      </svg>
+    </a>
+    <nav class="site-nav" aria-label="Hovedmeny">
+      <a href="tjenester.html">Tjenester</a>
+      <a href="om-oss.html">Om oss</a>
+      <a href="kontakt.html" aria-current="page">Kontakt</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-name">Forvaltningsxperten</span>
+    </a>
+  </div>
+</header>
+
+<main id="innhold" class="wrap">
+
+  <section>
+    <h1>Kontakt</h1>
+    <p>Fortell oss kort om eiendommen og hva dere trenger hjelp til – forvaltning, regnskap eller begge deler. En innledende prat er uforpliktende.</p>
+  </section>
+
+  <section>
+    <!--
+      KONTAKTSKJEMA – MÅ KOBLES TIL ET MOTTAK FØR PUBLISERING.
+      Eksempel med Formspree (https://formspree.io):
+        1. Opprett et skjema hos Formspree og kopier endepunkt-URL-en.
+        2. Sett den inn både i action="" og data-endpoint="" under.
+      Så lenge data-endpoint er tomt, stopper js/site.js innsending
+      og viser en forklarende melding i stedet.
+    -->
+    <form method="post" action="" data-endpoint="" novalidate="">
+      <div class="form-field">
+        <label for="navn">Navn</label>
+        <input type="text" id="navn" name="navn" autocomplete="name" required>
+      </div>
+
+      <div class="form-field">
+        <label for="epost">E-post</label>
+        <input type="email" id="epost" name="epost" autocomplete="email" required>
+      </div>
+
+      <div class="form-field">
+        <label for="telefon">Telefon <span class="label-hint">(valgfritt)</span></label>
+        <input type="tel" id="telefon" name="telefon" autocomplete="tel">
+      </div>
+
+      <div class="form-field">
+        <label for="melding">Melding</label>
+        <textarea id="melding" name="melding" required placeholder="For eksempel: type eiendom, antall enheter og hva dere trenger hjelp til."></textarea>
+      </div>
+
+      <button type="submit">Send melding</button>
+
+      <p id="skjema-melding" class="form-alert" hidden tabindex="-1">
+        Skjemaet er ikke koblet til et mottak ennå (<span class="placeholder">[SETT INN: skjema-endepunkt i kontakt.html]</span>).
+        Send oss gjerne en e-post direkte i mellomtiden – se kontaktinformasjonen under.
+      </p>
+
+      <p class="form-note">Vi bruker opplysningene kun til å svare på henvendelsen din.</p>
+    </form>
+  </section>
+
+  <section class="contact-info">
+    <h2>Kontaktinformasjon</h2>
+    <dl>
+      <dt>E-post</dt>
+      <dd><span class="placeholder">[SETT INN: e-postadresse]</span></dd>
+      <dt>Telefon</dt>
+      <dd><span class="placeholder">[SETT INN: telefonnummer]</span></dd>
+      <dt>Sted</dt>
+      <dd>Kristiansand – vi jobber med eiendommer i hele Agder</dd>
+    </dl>
+  </section>
+
+  <section>
+    <h2>Hva skjer når du tar kontakt?</h2>
+    <ol>
+      <li>Vi svarer og avtaler en uforpliktende prat.</li>
+      <li>Vi går gjennom eiendommen og behovet sammen med dere.</li>
+      <li>Dere får et konkret forslag til avtale – og bestemmer dere i ro og mak.</li>
+    </ol>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Forvaltningsxperten · Kristiansand, Agder</p>
+    <p>E-post: <span class="placeholder">[SETT INN: e-postadresse]</span> · Telefon: <span class="placeholder">[SETT INN: telefonnummer]</span></p>
+    <p>© 2026 Forvaltningsxperten · Org.nr: <span class="placeholder">[SETT INN: organisasjonsnummer]</span></p>
+  </div>
+</footer>
+
+<script src="js/site.js" defer></script>
+</body>
+</html>

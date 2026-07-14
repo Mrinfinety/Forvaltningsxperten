@@ -1,0 +1,432 @@
+/* ============================================================
+   Forvaltningsxperten – forvaltningsexperten.no
+   Mørkt, minimalt stilark: synlig luftfoto av Kristiansand i
+   bakgrunnen, innhold i mørke gjennomsiktige flater med lys
+   tekst. Logofargene: mørk brun #443831, krem #ece7e0,
+   varm grå #8e857c.
+   ============================================================ */
+
+*, *::before, *::after{ box-sizing: border-box; }
+
+html{ scroll-behavior: smooth; }
+
+::selection{ background: rgba(236, 231, 224, 0.25); }
+
+body{
+  margin: 0;
+  font: 17px/1.6 system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #f2eee6;
+  background: #211d1a; /* mørk reserve bak bildet */
+  min-height: 100vh;
+}
+
+/* Bakgrunnsbilde: synlig luftfoto med et mørkt slør over, slik at
+   de lyse tekstflatene står tydelig frem. Fast posisjonert lag i
+   stedet for background-attachment: fixed (upålitelig på mobil). */
+body::before{
+  content: "";
+  position: fixed;
+  inset: -12px;
+  z-index: -1;
+  background-color: #211d1a;
+  background-image:
+    linear-gradient(rgba(24, 20, 17, 0.10), rgba(24, 20, 17, 0.35)),
+    url("../img/bakgrunn.webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  animation: bg-driv 60s ease-in-out infinite alternate;
+}
+
+/* Tjenester-siden: bygg-banner (Kilden) som bakgrunn, med et litt
+   sterkere mørkt slør for lesbarhet. */
+body.side-tjenester::before{
+  background-image:
+    linear-gradient(rgba(24, 20, 17, 0.32), rgba(24, 20, 17, 0.58)),
+    url("../img/tjenester-bg.webp");
+}
+
+/* Umerkelig, sakte driv i bakgrunnsbildet */
+@keyframes bg-driv{
+  from{ transform: scale(1); }
+  to{ transform: scale(1.07); }
+}
+
+.wrap{
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+h1{
+  font-size: clamp(1.6rem, 4.5vw, 2rem);
+  line-height: 1.25;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 0 0 16px;
+  color: #ffffff;
+}
+
+h2{
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: #ffffff;
+}
+
+h3{
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 28px 0 4px;
+  color: #ffffff;
+}
+
+p{ margin: 0 0 12px; }
+p:last-child{ margin-bottom: 0; }
+
+.muted{ color: #c8bfb2; }
+
+a{ color: #ffffff; text-decoration: underline; text-underline-offset: 2px; }
+a:hover{ color: #cfc7bb; }
+
+/* Rolige overganger på alt interaktivt */
+a, button, .brand-name{
+  transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+input, textarea{
+  transition: border-color 0.25s ease, background-color 0.25s ease;
+}
+
+ol, ul{ margin: 0 0 12px; padding-left: 22px; }
+li{ margin-bottom: 8px; }
+
+:focus-visible{ outline: 2px solid #ffffff; outline-offset: 2px; }
+
+.skip-link{
+  position: absolute;
+  left: -9999px;
+  background: #f2eee6;
+  color: #211d1a;
+  padding: 8px 14px;
+}
+.skip-link:focus{ left: 12px; top: 12px; }
+
+/* Plassholdere for innhold som må fylles inn */
+.placeholder{
+  font-family: ui-monospace, Consolas, Menlo, monospace;
+  font-size: 0.85em;
+  color: #dbd2c3;
+  border-bottom: 1px dashed #a3987f;
+}
+
+/* ---------- Topp: logoboksen med menyen stående på logolinjen ---------- */
+
+.site-header{
+  background: rgba(26, 22, 19, 0.78);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 26px 0 24px;
+}
+
+/* Fx-boksen og menyen på én rad; menypunktene står på linjen som
+   kommer ut fra boksens nedre høyre hjørne. */
+.header-top{
+  display: flex;
+  align-items: flex-end;
+}
+
+.brand-logo{
+  display: block;
+  flex: none;
+}
+
+.logo-mark{
+  width: 56px;
+  height: 56px;
+  display: block;
+}
+
+.site-nav{
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 30px;
+  padding: 0 12px 12px 22px;
+}
+
+/* Logolinjen: starter i boksens hjørne og er akkurat lang nok til
+   menyen. Tegnes rolig ved innlasting. */
+.site-nav::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: 1px solid #8e857c;
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: linje-tegn 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s forwards;
+}
+
+@keyframes linje-tegn{
+  to{ transform: scaleX(1); }
+}
+
+.site-nav a{
+  position: relative;
+  text-decoration: none;
+  color: #e6dfd4;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+.site-nav a:hover{ color: #ffffff; }
+
+/* Diskré strek som vokser frem under menypunktet */
+.site-nav a::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.site-nav a:hover::after{ transform: scaleX(1); }
+.site-nav a[aria-current="page"]{ color: #ffffff; }
+.site-nav a[aria-current="page"]::after{ transform: scaleX(1); }
+
+/* Navnet under linjen */
+.brand{
+  display: inline-block;
+  text-decoration: none;
+}
+
+.brand-name{
+  display: block;
+  margin-top: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #f2eee6;
+  white-space: nowrap;
+}
+.brand:hover .brand-name{ color: #ffffff; }
+
+@media (max-width: 480px){
+  .logo-mark{ width: 46px; height: 46px; }
+  .site-nav{ gap: 18px; padding: 0 8px 10px 14px; }
+  .site-nav a{ font-size: 0.98rem; }
+  .brand-name{
+    font-size: 0.9rem;
+    letter-spacing: 0.18em;
+  }
+}
+
+@media (max-width: 360px){
+  .site-nav{ gap: 13px; padding: 0 6px 10px 10px; }
+  .site-nav a{ font-size: 0.88rem; }
+}
+
+/* ---------- Innhold: mørk gjennomsiktig firkant rundt teksten ---------- */
+
+main.wrap{
+  background: rgba(26, 22, 19, 0.78);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 10px 36px 44px;
+  margin: 36px auto 72px;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
+}
+
+main section{ padding: 46px 0; }
+main section + section{ border-top: 1px solid rgba(255, 255, 255, 0.14); }
+
+/* Rene linjeikoner over tjenesteområdene */
+.tjeneste-ikon{
+  display: block;
+  width: 42px;
+  height: 42px;
+  color: #cdbfa4;
+  margin-bottom: 14px;
+}
+
+/* Tjeneste-blokk med ikon (forsiden) */
+.tjeneste{ margin-top: 34px; }
+.tjeneste h3{ margin-top: 0; }
+.tjeneste .tjeneste-ikon{ margin-bottom: 10px; }
+
+/* Liten versal-etikett over overskrifter (tjenester-siden) */
+.eyebrow{
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #cdbfa4;
+  margin-bottom: 10px;
+}
+
+/* Delytelser: ryddig liste med hårfine skillelinjer, firkant-merke
+   (som logoen) og myk overgang ved peking. */
+.deltjeneste{
+  padding: 20px 0 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.deltjeneste:first-of-type{ margin-top: 8px; }
+.deltjeneste h3{
+  margin: 0 0 4px;
+  transition: color 0.25s ease;
+}
+.deltjeneste h3::before{
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  background: #cdbfa4;
+  margin-right: 13px;
+  vertical-align: middle;
+  transform: translateY(-2px);
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+.deltjeneste:hover h3{ color: #e7dcc6; }
+.deltjeneste:hover h3::before{
+  background: #e7dcc6;
+  transform: translateY(-2px) rotate(45deg);
+}
+
+/* Seksjonene glir rolig inn når de kommer til syne. Slår bare inn
+   når <html> har klassen "js" (settes i <head>), slik at innholdet
+   aldri er skjult om JavaScript ikke kjører. */
+.js main section{
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.js main section.vist{
+  opacity: 1;
+  transform: none;
+}
+
+[id]{ scroll-margin-top: 24px; }
+
+@media (max-width: 640px){
+  main.wrap{
+    padding: 6px 22px 36px;
+    margin: 18px auto 40px;
+    border-radius: 10px;
+  }
+  main section{ padding: 38px 0; }
+}
+
+/* ---------- Skjema ---------- */
+
+.form-field{ margin-bottom: 18px; }
+
+label{
+  display: block;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.label-hint{ font-weight: 400; color: #c8bfb2; }
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea{
+  width: 100%;
+  font: inherit;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 0;
+  padding: 10px 12px;
+}
+
+input::placeholder,
+textarea::placeholder{
+  color: rgba(255, 255, 255, 0.45);
+}
+
+input:focus,
+textarea:focus{
+  outline: none;
+  border-color: #ffffff;
+}
+
+textarea{
+  min-height: 140px;
+  resize: vertical;
+}
+
+button{
+  font: inherit;
+  font-weight: 600;
+  color: #f2eee6;
+  background: transparent;
+  border: 1px solid #f2eee6;
+  border-radius: 0;
+  padding: 10px 24px;
+  cursor: pointer;
+}
+button:hover{
+  background: #ece7e0;
+  border-color: #ece7e0;
+  color: #211d1a;
+}
+
+.form-alert{
+  border: 1px dashed #b3a88f;
+  padding: 12px 14px;
+  margin-top: 16px;
+  color: #ece4d3;
+}
+
+.form-note{
+  font-size: 0.85rem;
+  color: #c8bfb2;
+  margin-top: 12px;
+}
+
+.contact-info dt{
+  font-weight: 600;
+  margin-top: 12px;
+  color: #ffffff;
+}
+.contact-info dd{ margin: 0; }
+
+/* ---------- Bunn: mørk gjennomsiktig stripe ---------- */
+
+.site-footer{
+  background: rgba(26, 22, 19, 0.78);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 28px 0 48px;
+  font-size: 0.85rem;
+  color: #b9b0a4;
+}
+.site-footer p{ margin: 0 0 4px; }
+.site-footer a{ color: #b9b0a4; }
+.site-footer a:hover{ color: #ffffff; }
+.site-footer .placeholder{ color: #c4bbae; }
+
+/* ---------- Redusert bevegelse ---------- */
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+  body::before{ animation: none; }
+  .site-nav::after{ animation: none; transform: none; }
+  .js main section{ opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after{ transition: none !important; }
+}
