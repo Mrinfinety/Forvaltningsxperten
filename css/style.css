@@ -138,6 +138,8 @@ li{ margin-bottom: 8px; }
   backdrop-filter: blur(6px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding: 26px 0 24px;
+  overflow-x: hidden;
+  overflow-x: clip; /* klipper logolinjens forlengelse så den ikke gir horisontal scroll */
 }
 
 /* Fx-boksen og menyen på én rad; menypunktene står på linjen som
