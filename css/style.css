@@ -30,7 +30,7 @@ body::before{
   z-index: -1;
   background-color: #211d1a;
   background-image:
-    linear-gradient(rgba(24, 20, 17, 0.10), rgba(24, 20, 17, 0.35)),
+    linear-gradient(rgba(24, 20, 17, 0.22), rgba(24, 20, 17, 0.46)),
     url("../img/bakgrunn.webp");
   background-position: center;
   background-size: cover;
