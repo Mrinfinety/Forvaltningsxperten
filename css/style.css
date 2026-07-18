@@ -30,7 +30,7 @@ body::before{
   z-index: -1;
   background-color: #211d1a;
   background-image:
-    linear-gradient(rgba(24, 20, 17, 0.22), rgba(24, 20, 17, 0.46)),
+    linear-gradient(rgba(24, 20, 17, 0.28), rgba(24, 20, 17, 0.50)),
     url("../img/bakgrunn.webp");
   background-position: center;
   background-size: cover;
@@ -38,12 +38,23 @@ body::before{
   animation: bg-driv 60s ease-in-out infinite alternate;
 }
 
-/* Tjenester-siden: bygg-banner (Kilden) som bakgrunn, med et litt
-   sterkere mørkt slør for lesbarhet. */
+/* Egen bakgrunn per side – alle unike, sylskarpe Sørlands-motiver:
+   forside = luftfoto (bakgrunn.webp), tjenester = kontorbygg,
+   om oss = bygate, kontakt = havn. */
 body.side-tjenester::before{
   background-image:
-    linear-gradient(rgba(24, 20, 17, 0.32), rgba(24, 20, 17, 0.58)),
+    linear-gradient(rgba(24, 20, 17, 0.28), rgba(24, 20, 17, 0.50)),
     url("../img/tjenester-bg.webp");
+}
+body.side-om::before{
+  background-image:
+    linear-gradient(rgba(24, 20, 17, 0.28), rgba(24, 20, 17, 0.50)),
+    url("../img/om-oss-bg.webp");
+}
+body.side-kontakt::before{
+  background-image:
+    linear-gradient(rgba(24, 20, 17, 0.28), rgba(24, 20, 17, 0.50)),
+    url("../img/kontakt-bg.webp");
 }
 
 /* Umerkelig, sakte driv i bakgrunnsbildet */
