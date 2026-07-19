@@ -176,7 +176,7 @@ li{ margin-bottom: 8px; }
   position: absolute;
   left: -108px;  /* gjennom Fx-boksen (56px) og ~52px ut på venstresiden */
   right: -40px;  /* like langt ut på høyresiden forbi menyen */
-  bottom: 10px;  /* i høyde med bunnen av Fx-bokstavene */
+  bottom: 8px;   /* i høyde med bunnen av Fx-bokstavene (inkl. x-ens strek) */
   border-top: 1px solid #8e857c;
   z-index: 2;    /* tegnes oppå Fx-boksen så linjen går gjennom den */
   transform: scaleX(0);
@@ -237,7 +237,7 @@ li{ margin-bottom: 8px; }
 @media (max-width: 480px){
   .logo-mark{ width: 46px; height: 46px; }
   .site-nav{ gap: 18px; padding: 0 8px 10px 14px; }
-  .site-nav::after{ left: -98px; bottom: 9px; }
+  .site-nav::after{ left: -98px; bottom: 7px; }
   .site-nav a{ font-size: 0.98rem; }
   .brand-name{
     font-size: 0.9rem;
