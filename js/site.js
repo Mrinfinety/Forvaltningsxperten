@@ -1,13 +1,10 @@
-/* Forvaltningsxperten – felles skript: rolige innlastingseffekter
-   på alle sider, og skjemavakt på kontaktsiden. */
+/* Forvaltningsxperten – felles skript */
 (function () {
   "use strict";
 
-  /* Seksjonene glir rolig inn når de kommer til syne. CSS-en gjemmer
-     dem bare når <html> har klassen "js" (settes i <head>), så
-     innholdet aldri er skjult om JavaScript ikke kjører. Seksjoner
-     som allerede er i synsfeltet vises umiddelbart – observeren
-     håndterer bare det som ligger lenger ned. */
+  /* Seksjonene glir rolig inn når de kommer til syne. Seksjoner som
+     allerede er i synsfeltet vises umiddelbart; observeren håndterer
+     resten. */
   var vis = function (el) { el.classList.add("vist"); };
   var under = [];
   document.querySelectorAll("main section").forEach(function (s) {
@@ -31,27 +28,49 @@
     under.forEach(vis);
   }
 
-  /* Kontaktskjema: stopper innsending til et mottak (endepunkt) er
-     satt i data-endpoint / action i kontakt.html. Se kommentar der. */
-  var form = document.querySelector("form[data-endpoint]");
+  /* Kontaktskjema: sender via FormSubmit (AJAX) og viser kvittering
+     uten å laste siden på nytt. Finnes bare på kontaktsiden. */
+  var form = document.getElementById("kontaktskjema");
   if (!form) return;
+  var status = document.getElementById("skjema-status");
+  var btn = form.querySelector("button[type='submit']");
+
+  function visStatus(ok, tekst) {
+    status.textContent = tekst;
+    status.classList.toggle("form-alert--ok", ok);
+    status.hidden = false;
+    status.focus();
+  }
 
   form.addEventListener("submit", function (e) {
-    if (!form.getAttribute("data-endpoint")) {
-      e.preventDefault();
-      var msg = document.getElementById("skjema-melding");
-      if (msg) {
-        msg.hidden = false;
-        msg.focus();
-      }
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
       return;
     }
+    var opprinnelig = btn.textContent;
+    btn.disabled = true;
+    btn.textContent = "Sender …";
 
-    /* Nettleserens validering når skjemaet er koblet opp
-       (novalidate er satt i HTML-en). */
-    if (!form.checkValidity()) {
-      e.preventDefault();
-      form.reportValidity();
-    }
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+    })
+      .then(function (r) {
+        if (r.ok) {
+          visStatus(true, "Takk! Meldingen er sendt – vi svarer så snart vi kan.");
+          form.reset();
+        } else {
+          throw new Error("ikke ok");
+        }
+      })
+      .catch(function () {
+        visStatus(false, "Beklager, noe gikk galt. Send oss gjerne en e-post direkte til forvaltningsxperten@gmail.com.");
+      })
+      .then(function () {
+        btn.disabled = false;
+        btn.textContent = opprinnelig;
+      });
   });
 })();

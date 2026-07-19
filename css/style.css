@@ -407,6 +407,11 @@ button:hover{
   margin-top: 16px;
   color: #ece4d3;
 }
+/* Kvittering ved vellykket innsending */
+.form-alert--ok{
+  border-style: solid;
+  border-color: #cdbfa4;
+}
 
 .form-note{
   font-size: 0.85rem;

@@ -44,14 +44,22 @@
 
   <section>
     <!--
-      KONTAKTSKJEMA – MÅ KOBLES TIL ET MOTTAK FØR PUBLISERING.
-      Eksempel med Formspree (https://formspree.io):
-        1. Opprett et skjema hos Formspree og kopier endepunkt-URL-en.
-        2. Sett den inn både i action="" og data-endpoint="" under.
-      Så lenge data-endpoint er tomt, stopper js/site.js innsending
-      og viser en forklarende melding i stedet.
+      KONTAKTSKJEMA – koblet til FormSubmit.co (gratis, ingen konto).
+      Sender henvendelser til forvaltningsxperten@gmail.com.
+      NB: Første gang skjemaet sendes kommer en bekreftelses-e-post fra
+      FormSubmit til den adressen – klikk «Activate Form» der ÉN gang, så
+      leveres alle henvendelser til innboksen. js/site.js sender via AJAX
+      og viser kvittering uten å laste siden på nytt.
     -->
-    <form method="post" action="" data-endpoint="" novalidate="">
+    <form id="kontaktskjema" method="post"
+          action="https://formsubmit.co/ajax/forvaltningsxperten@gmail.com" novalidate>
+      <input type="hidden" name="_subject" value="Ny henvendelse fra forvaltningsxperten.no">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <!-- honningfelle mot roboter – skal stå tom -->
+      <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
+             style="position:absolute; left:-9999px;">
+
       <div class="form-field">
         <label for="navn">Navn</label>
         <input type="text" id="navn" name="navn" autocomplete="name" required>
@@ -59,7 +67,7 @@
 
       <div class="form-field">
         <label for="epost">E-post</label>
-        <input type="email" id="epost" name="epost" autocomplete="email" required>
+        <input type="email" id="epost" name="email" autocomplete="email" required>
       </div>
 
       <div class="form-field">
@@ -74,10 +82,7 @@
 
       <button type="submit">Send melding</button>
 
-      <p id="skjema-melding" class="form-alert" hidden tabindex="-1">
-        Skjemaet er ikke satt opp for automatisk sending ennå. Send oss gjerne en e-post
-        direkte til <a href="mailto:forvaltningsxperten@gmail.com">forvaltningsxperten@gmail.com</a> i mellomtiden.
-      </p>
+      <p id="skjema-status" class="form-alert" hidden tabindex="-1"></p>
 
       <p class="form-note">Vi bruker opplysningene kun til å svare på henvendelsen din.</p>
     </form>
