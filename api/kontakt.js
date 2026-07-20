@@ -56,7 +56,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: "Forvaltningsxperten <onboarding@resend.dev>",
-        to: ["forvaltningsxperten@gmail.com"],
+        to: ["rolf.leo.stumpf@gmail.com"],
         reply_to: epost,
         subject: "Ny henvendelse fra forvaltningsxperten.no",
         html: html
