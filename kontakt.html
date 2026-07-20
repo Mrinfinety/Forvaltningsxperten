@@ -44,18 +44,13 @@
 
   <section>
     <!--
-      KONTAKTSKJEMA – koblet til FormSubmit.co (gratis, ingen konto).
-      Sender henvendelser til forvaltningsxperten@gmail.com.
-      NB: Første gang skjemaet sendes kommer en bekreftelses-e-post fra
-      FormSubmit til den adressen – klikk «Activate Form» der ÉN gang, så
-      leveres alle henvendelser til innboksen. js/site.js sender via AJAX
+      KONTAKTSKJEMA – sender til vårt eget mottak /api/kontakt (Vercel-funksjon),
+      som videresender henvendelsen som e-post via Resend til
+      forvaltningsxperten@gmail.com. Ingen tredjeparts-branding; kun eier mottar.
+      Krever miljøvariabelen RESEND_API_KEY i Vercel. js/site.js sender via AJAX
       og viser kvittering uten å laste siden på nytt.
     -->
-    <form id="kontaktskjema" method="post"
-          action="https://formsubmit.co/ajax/forvaltningsxperten@gmail.com" novalidate>
-      <input type="hidden" name="_subject" value="Ny henvendelse fra forvaltningsxperten.no">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_captcha" value="false">
+    <form id="kontaktskjema" method="post" action="/api/kontakt" novalidate>
       <!-- honningfelle mot roboter – skal stå tom -->
       <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
              style="position:absolute; left:-9999px;">

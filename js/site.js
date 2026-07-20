@@ -52,10 +52,13 @@
     btn.disabled = true;
     btn.textContent = "Sender …";
 
+    var data = {};
+    new FormData(form).forEach(function (v, k) { data[k] = v; });
+
     fetch(form.action, {
       method: "POST",
-      body: new FormData(form),
-      headers: { "Accept": "application/json" }
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify(data)
     })
       .then(function (r) {
         if (r.ok) {
