@@ -1,7 +1,7 @@
 // Kontaktmottak for forvaltningsxperten.no
 // Tar imot kontaktskjemaet (POST, JSON) og sender henvendelsen som e-post
 // via Resend til forvaltningsxperten@gmail.com. Ingen tredjeparts-branding,
-// kun eier mottar. Krever miljøvariabelen RESEND_API_KEY i Vercel.
+// kun eier mottar. Krever miljøvariabelen RESEND i Vercel.
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -26,7 +26,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Ugyldig e-postadresse." });
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
+  const apiKey = process.env.RESEND;
   if (!apiKey) {
     return res.status(500).json({ error: "Serveren er ikke ferdig konfigurert." });
   }
