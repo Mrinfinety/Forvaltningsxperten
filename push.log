@@ -1,0 +1,52 @@
+14:23:16.183213 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/bin
+14:23:16.202210 git.c:502               trace: built-in: git push origin main
+14:23:16.204208 run-command.c:673       trace: run_command: GIT_DIR=.git git remote-https origin https://github.com/Mrinfinety/Forvaltningsxperten.git
+14:23:16.204208 run-command.c:934       trace: start_command: git remote-https origin https://github.com/Mrinfinety/Forvaltningsxperten.git
+14:23:16.219208 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/libexec/git-core
+14:23:16.226207 git.c:810               trace: exec: git-remote-https origin https://github.com/Mrinfinety/Forvaltningsxperten.git
+14:23:16.250205 run-command.c:673       trace: run_command: git-remote-https origin https://github.com/Mrinfinety/Forvaltningsxperten.git
+14:23:16.251206 run-command.c:934       trace: start_command: git-remote-https origin https://github.com/Mrinfinety/Forvaltningsxperten.git
+14:23:16.287253 exec-cmd.c:266          trace: resolved executable dir: C:/Program Files/Git/mingw64/libexec/git-core
+14:23:16.303248 http.c:968              == Info: Could not find host github.com in the .netrc file; using defaults
+14:23:16.372293 http.c:968              == Info: Host github.com:443 was resolved.
+14:23:16.372293 http.c:968              == Info: IPv6: (none)
+14:23:16.372293 http.c:968              == Info: IPv4: 140.82.121.4
+14:23:16.372293 http.c:968              == Info:   Trying 140.82.121.4:443...
+14:23:16.418670 http.c:968              == Info: schannel: disabled automatic use of client certificate
+14:23:16.419967 http.c:968              == Info: ALPN: curl offers http/1.1
+14:23:16.503583 http.c:968              == Info: ALPN: server accepted http/1.1
+14:23:16.503583 http.c:968              == Info: Established connection to github.com (140.82.121.4 port 443) from 192.168.1.11 port 50106 
+14:23:16.504499 http.c:968              == Info: using HTTP/1.x
+14:23:16.504499 http.c:915              => Send header, 0000000212 bytes (0x000000d4)
+14:23:16.504499 http.c:927              => Send header: GET /Mrinfinety/Forvaltningsxperten.git/info/refs?service=git-receive-pack HTTP/1.1
+14:23:16.504499 http.c:927              => Send header: Host: github.com
+14:23:16.504499 http.c:927              => Send header: User-Agent: git/2.54.0.windows.1
+14:23:16.504499 http.c:927              => Send header: Accept: */*
+14:23:16.504499 http.c:927              => Send header: Accept-Encoding: deflate, gzip, br, zstd
+14:23:16.504499 http.c:927              => Send header: Pragma: no-cache
+14:23:16.504499 http.c:927              => Send header:
+14:23:16.504499 http.c:968              == Info: Request completely sent off
+14:23:16.654441 http.c:915              <= Recv header, 0000000027 bytes (0x0000001b)
+14:23:16.654441 http.c:927              <= Recv header: HTTP/1.1 401 Unauthorized
+14:23:16.654441 http.c:915              <= Recv header, 0000000026 bytes (0x0000001a)
+14:23:16.654441 http.c:927              <= Recv header: Server: GitHub-Babel/3.0
+14:23:16.654441 http.c:915              <= Recv header, 0000000054 bytes (0x00000036)
+14:23:16.654441 http.c:927              <= Recv header: Content-Security-Policy: default-src 'none'; sandbox
+14:23:16.654441 http.c:915              <= Recv header, 0000000041 bytes (0x00000029)
+14:23:16.654441 http.c:927              <= Recv header: Content-Type: text/plain; charset=UTF-8
+14:23:16.654441 http.c:915              <= Recv header, 0000000040 bytes (0x00000028)
+14:23:16.654441 http.c:927              <= Recv header: www-authenticate: Basic realm="GitHub"
+14:23:16.654441 http.c:915              <= Recv header, 0000000020 bytes (0x00000014)
+14:23:16.654441 http.c:927              <= Recv header: Content-Length: 26
+14:23:16.654441 http.c:915              <= Recv header, 0000000037 bytes (0x00000025)
+14:23:16.654441 http.c:927              <= Recv header: Date: Mon, 20 Jul 2026 12:23:16 GMT
+14:23:16.654441 http.c:915              <= Recv header, 0000000023 bytes (0x00000017)
+14:23:16.654441 http.c:927              <= Recv header: X-Frame-Options: DENY
+14:23:16.654441 http.c:915              <= Recv header, 0000000073 bytes (0x00000049)
+14:23:16.654441 http.c:927              <= Recv header: Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+14:23:16.654441 http.c:915              <= Recv header, 0000000059 bytes (0x0000003b)
+14:23:16.654441 http.c:927              <= Recv header: X-GitHub-Request-Id: C3BA:17368E:CC890E8:A116AD8:6A5E1334
+14:23:16.654441 http.c:915              <= Recv header, 0000000002 bytes (0x00000002)
+14:23:16.654441 http.c:927              <= Recv header:
+14:23:16.654441 http.c:968              == Info: Connection #0 to host github.com:443 left intact
+14:23:16.654441 run-command.c:673       trace: run_command: 'git credential-manager get'
