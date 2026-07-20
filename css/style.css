@@ -433,11 +433,24 @@ button:hover{
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 28px 0 48px;
-  font-size: 0.85rem;
+  padding: 14px 0 16px;
+  font-size: 0.82rem;
   color: #b9b0a4;
 }
-.site-footer p{ margin: 0 0 4px; }
+.site-footer .footer-meta{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3px 22px;
+}
+.site-footer .footer-meta > *{ position: relative; }
+.site-footer .footer-meta > * + *::before{
+  content: "·";
+  position: absolute;
+  left: -12px;
+  color: #6b6358;
+}
 .site-footer a{ color: #b9b0a4; }
 .site-footer a:hover{ color: #ffffff; }
 .site-footer .placeholder{ color: #c4bbae; }
