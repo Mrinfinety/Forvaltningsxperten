@@ -8,3 +8,5 @@ desktop.ini
 # Scratch
 *.b64
 push.log
+# Trykkfiler (visittkort) – ikke del av nettsiden
+visittkort/
