@@ -237,7 +237,10 @@ li{ margin-bottom: 8px; }
 @media (max-width: 480px){
   .logo-mark{ width: 46px; height: 46px; }
   .site-nav{ gap: 18px; padding: 0 8px 10px 14px; }
-  .site-nav::after{ left: -98px; bottom: 7px; }
+  /* På mobil: dropp transform/animasjon på linjen. En transformert
+     hårlinje over en backdrop-filter-header kan forsvinne ved scroll
+     og ikke males på nytt. Statisk linje er robust. */
+  .site-nav::after{ left: -98px; bottom: 7px; animation: none; transform: none; }
   .site-nav a{ font-size: 0.98rem; }
   .brand-name{
     font-size: 0.9rem;
