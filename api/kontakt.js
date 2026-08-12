@@ -1,7 +1,7 @@
 // Kontaktmottak for forvaltningsxperten.no
 // Tar imot kontaktskjemaet (POST, JSON) og sender henvendelsen som e-post
-// via Resend til forvaltningsxperten@gmail.com. Ingen tredjeparts-branding,
-// kun eier mottar. Krever miljøvariabelen RESEND i Vercel.
+// via Resend til firmaets felles postkasse. Ingen tredjeparts-branding,
+// kun eierne mottar. Krever miljøvariabelen RESEND i Vercel.
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -56,7 +56,9 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: "Forvaltningsxperten <noreply@forvaltningsxperten.no>",
-        to: ["forvaltningsxperten@gmail.com"],
+        // Felles postkasse som alle tre har i Outlook (IMAP => delt lest/ulest).
+        // Gmailen står som reserve i overgangen; kan fjernes når post@ er bekreftet.
+        to: ["post@forvaltningsxperten.no", "forvaltningsxperten@gmail.com"],
         reply_to: epost,
         subject: "Ny henvendelse fra forvaltningsxperten.no",
         html: html
