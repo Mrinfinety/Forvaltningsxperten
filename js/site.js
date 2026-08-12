@@ -69,7 +69,7 @@
         }
       })
       .catch(function () {
-        visStatus(false, "Beklager, noe gikk galt. Send oss gjerne en e-post direkte til forvaltningsxperten@gmail.com.");
+        visStatus(false, "Beklager, noe gikk galt. Send oss gjerne en e-post direkte til rolf.leo@forvaltningsxperten.no.");
       })
       .then(function () {
         btn.disabled = false;
