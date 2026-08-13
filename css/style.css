@@ -458,6 +458,71 @@ button:hover{
 .site-footer a:hover{ color: #ffffff; }
 .site-footer .placeholder{ color: #c4bbae; }
 
+/* ---------- Forskjøvet innfading og forfinet peking ---------- */
+
+/* Kortene kommer inn ett og ett når seksjonen blir synlig, i stedet
+   for at alt dukker opp samtidig. Gir en roligere, dyrere følelse. */
+.js main section .tjeneste,
+.js main section .deltjeneste{
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.js main section.vist .tjeneste,
+.js main section.vist .deltjeneste{
+  opacity: 1;
+  transform: none;
+}
+.js main section.vist .tjeneste:nth-of-type(1),
+.js main section.vist .deltjeneste:nth-of-type(1){ transition-delay: 0.05s; }
+.js main section.vist .tjeneste:nth-of-type(2),
+.js main section.vist .deltjeneste:nth-of-type(2){ transition-delay: 0.11s; }
+.js main section.vist .tjeneste:nth-of-type(3),
+.js main section.vist .deltjeneste:nth-of-type(3){ transition-delay: 0.17s; }
+.js main section.vist .deltjeneste:nth-of-type(4){ transition-delay: 0.23s; }
+.js main section.vist .deltjeneste:nth-of-type(5){ transition-delay: 0.29s; }
+.js main section.vist .deltjeneste:nth-of-type(6){ transition-delay: 0.35s; }
+.js main section.vist .deltjeneste:nth-of-type(7){ transition-delay: 0.41s; }
+.js main section.vist .deltjeneste:nth-of-type(8){ transition-delay: 0.47s; }
+
+/* Rolig anslag på innledningen: overskrift først, så ingressen. */
+.js main section:first-of-type h1,
+.js main section:first-of-type > p{
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+.js main section:first-of-type.vist h1{
+  opacity: 1; transform: none; transition-delay: 0.08s;
+}
+.js main section:first-of-type.vist > p:nth-of-type(1){
+  opacity: 1; transform: none; transition-delay: 0.22s;
+}
+.js main section:first-of-type.vist > p:nth-of-type(2){
+  opacity: 1; transform: none; transition-delay: 0.34s;
+}
+
+/* Tjenestekortene løftes så vidt ved peking. */
+.tjeneste{
+  padding: 14px;
+  margin-left: -14px;
+  margin-right: -14px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.tjeneste:hover{
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+/* Delytelsene får en hårfin bakgrunn ved peking. */
+.deltjeneste{
+  transition: background-color 0.3s ease, color 0.25s ease;
+}
+.deltjeneste:hover{
+  background: rgba(255, 255, 255, 0.03);
+}
+
 /* ---------- Redusert bevegelse ---------- */
 
 @media (prefers-reduced-motion: reduce){
@@ -465,5 +530,12 @@ button:hover{
   body::before{ animation: none; }
   .site-nav::after{ animation: none; transform: none; }
   .js main section{ opacity: 1; transform: none; transition: none; }
+  .js main section .tjeneste,
+  .js main section .deltjeneste,
+  .js main section:first-of-type h1,
+  .js main section:first-of-type > p{
+    opacity: 1; transform: none; transition: none; transition-delay: 0s;
+  }
+  .tjeneste:hover{ transform: none; }
   *, *::before, *::after{ transition: none !important; }
 }
