@@ -322,6 +322,22 @@ main section + section{ border-top: 1px solid rgba(255, 255, 255, 0.14); }
   transform: translateY(-2px) rotate(45deg);
 }
 
+/* Partnerlogo: lys flate bak logoen, slik at partnerens egne farger
+   gjengis riktig på det mørke panelet. */
+.partner-logo{
+  display: inline-block;
+  background: #f3f1ec;
+  border-radius: 8px;
+  padding: 12px 18px;
+  margin: 20px 0 0;
+  line-height: 0;
+}
+.partner-logo img{
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
 /* Seksjonene glir rolig inn når de kommer til syne. Slår bare inn
    når <html> har klassen "js" (settes i <head>), slik at innholdet
    aldri er skjult om JavaScript ikke kjører. */
