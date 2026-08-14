@@ -32,7 +32,8 @@
 
 <a class="skip-link" href="#innhold">Hopp til innhold</a>
 
-<header class="site-header">
+<header class="hero" style="--foto: url('img/kontakt-bg.webp')">
+  <div class="site-header">
   <div class="wrap header-top">
     <a class="brand-logo" href="index.html" aria-label="Forvaltningsxperten – til forsiden">
       <svg class="logo-mark" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -52,16 +53,18 @@
       <span class="brand-name">Forvaltningsxperten</span>
     </a>
   </div>
+  </div>
+
+  <div class="wrap hero-tekst">
+    <h1>Kontakt</h1>
+    <p>Fortell oss kort om eiendommen og hva dere trenger hjelp til – forvaltning, regnskap eller begge deler. En innledende prat er uforpliktende.</p>
+  </div>
 </header>
 
 <main id="innhold" class="wrap">
 
-  <section>
-    <h1>Kontakt</h1>
-    <p>Fortell oss kort om eiendommen og hva dere trenger hjelp til – forvaltning, regnskap eller begge deler. En innledende prat er uforpliktende.</p>
-  </section>
-
-  <section>
+  <div class="innhold">
+<section>
     <!--
       KONTAKTSKJEMA – sender til vårt eget mottak /api/kontakt (Vercel-funksjon),
       som videresender henvendelsen som e-post via Resend til
@@ -124,6 +127,7 @@
       <li>Dere får et konkret forslag til avtale – og bestemmer dere i ro og mak.</li>
     </ol>
   </section>
+  </div>
 
 </main>
 

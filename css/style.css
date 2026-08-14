@@ -560,6 +560,122 @@ button:disabled:hover{
   background: rgba(255, 255, 255, 0.03);
 }
 
+/* ---------- Oppsett: toppbilde, solid flate, fotobånd ----------
+   Erstatter det faste bakgrunnsbildet med gjennomsiktig panel oppå.
+   Hver side har et toppbilde, innholdet står på solid flate, og
+   fotobånd deler opp lange sider. */
+
+body::before{ display: none; }
+body{ background: #171412; }
+
+.hero{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 62vh;
+  background-image: var(--foto);
+  background-position: center;
+  background-size: cover;
+}
+.hero--stor{ min-height: 84vh; }
+.hero--liten{ min-height: 42vh; }
+.hero::after{
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(rgba(20, 17, 15, 0.28), rgba(23, 20, 18, 0.97));
+}
+.hero > *{ position: relative; z-index: 2; }
+.hero .site-header{
+  background: transparent;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  border-bottom: 0;
+}
+
+.hero-tekst{
+  margin-top: auto;
+  padding-bottom: 74px;
+  max-width: 940px;
+}
+.hero-tekst h1{
+  max-width: none;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.14;
+  margin-bottom: 18px;
+}
+.hero-tekst p{ max-width: 58ch; color: #ded6c9; font-size: 1.06rem; }
+.hero--liten .hero-tekst{ padding-bottom: 44px; }
+.hero--liten .hero-tekst h1{ font-size: clamp(1.7rem, 4vw, 2.4rem); }
+
+/* Handlingsknapp i toppbildet */
+.hero-cta{
+  display: inline-block;
+  margin-top: 16px;
+  padding: 16px 36px;
+  background: #ece7e0;
+  color: #211d1a;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.38);
+  transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+.hero-cta:hover{
+  background: #ffffff;
+  color: #211d1a;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.5);
+}
+.hero-cta:active{ transform: translateY(0); }
+
+/* Innholdet står på solid flate – ingen boks, ingen uskarphet */
+main.wrap{
+  background: #171412;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none; backdrop-filter: none;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+.innhold{ max-width: 640px; margin: 0 auto; padding: 0 20px; }
+
+/* Fotobånd mellom seksjonene */
+.band{
+  position: relative;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  background-image: var(--foto);
+  background-position: center;
+  background-size: cover;
+}
+.band::after{
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(rgba(18, 15, 13, 0.42), rgba(18, 15, 13, 0.62));
+}
+.band-tekst{
+  position: relative; z-index: 2;
+  max-width: 640px; margin: 0 auto; padding: 0 20px; width: 100%;
+}
+.band h2{ margin: 0 0 6px; }
+.band p{ margin: 0; color: #ded6c9; max-width: 48ch; }
+
+.site-footer{ background: #13100f; }
+
+@media (max-width: 640px){
+  main.wrap{ padding: 0; margin: 0; border-radius: 0; }
+  .innhold{ padding: 0 22px; }
+  .hero{ min-height: 56vh; }
+  .hero--stor{ min-height: 72vh; }
+  .hero--liten{ min-height: 38vh; }
+  .hero-tekst{ padding-bottom: 46px; }
+  .band{ min-height: 200px; }
+}
+
 /* ---------- Redusert bevegelse ---------- */
 
 @media (prefers-reduced-motion: reduce){
