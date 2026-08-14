@@ -579,6 +579,10 @@ body{ background: #171412; }
 }
 .hero--stor{ min-height: 84vh; }
 .hero--liten{ min-height: 42vh; }
+/* Uten foto – brukes på juridiske sider der bilde ikke hører hjemme */
+.hero--ren{ min-height: 0; background-image: none; background: #1d1917; }
+.hero--ren::after{ display: none; }
+.hero--ren .hero-tekst{ padding-top: 10px; padding-bottom: 40px; }
 .hero::after{
   content: "";
   position: absolute; inset: 0;
