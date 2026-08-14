@@ -646,6 +646,24 @@ main.wrap{
 }
 .innhold{ max-width: 640px; margin: 0 auto; padding: 0 20px; }
 
+/* Kortene brer seg utover på brede skjermer, mens løpende tekst
+   holder seg smal og lesbar. Fyller den tomme plassen på sidene. */
+@media (min-width: 900px){
+  .innhold--bred{ max-width: 1020px; }
+  .kort-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    align-items: start;
+    margin-top: 28px;
+  }
+  .kort-grid .tjeneste{ margin-top: 0; }
+  /* Ingress og løpende tekst holder lesbar linjelengde selv i bred spalte */
+  .innhold--bred section > p,
+  .innhold--bred section > ul,
+  .innhold--bred section > ol{ max-width: 640px; }
+}
+
 /* Fotobånd mellom seksjonene */
 .band{
   position: relative;
