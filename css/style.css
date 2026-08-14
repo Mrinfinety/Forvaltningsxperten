@@ -419,6 +419,18 @@ button:hover{
   border-color: #ece7e0;
   color: #211d1a;
 }
+button{ transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease, transform 0.12s ease, opacity 0.25s ease; }
+button:active{ transform: translateY(1px); }
+
+/* Mens skjemaet sender: knappen dempes og slutter å se trykkbar ut. */
+button:disabled,
+button:disabled:hover{
+  background: transparent;
+  border-color: rgba(242, 238, 230, 0.45);
+  color: rgba(242, 238, 230, 0.65);
+  cursor: default;
+  transform: none;
+}
 
 .form-alert{
   border: 1px dashed #b3a88f;
@@ -553,5 +565,6 @@ button:hover{
     opacity: 1; transform: none; transition: none; transition-delay: 0s;
   }
   .tjeneste:hover{ transform: none; }
+  button:active{ transform: none; }
   *, *::before, *::after{ transition: none !important; }
 }
