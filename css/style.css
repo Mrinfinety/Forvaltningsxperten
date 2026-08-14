@@ -92,6 +92,15 @@ h3{
   color: #ffffff;
 }
 
+/* Overskriftene i antikva. Skiller siden fra de rene sans-serif-sidene
+   i bransjen, og henger sammen med Palatino på visittkortene. Bruker
+   systemskrift – ingen nedlasting, ingen tredjepart, ingen sporing. */
+h1, h2, h3{
+  font-family: ui-serif, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  letter-spacing: 0;
+  font-weight: 700;
+}
+
 p{ margin: 0 0 12px; }
 p:last-child{ margin-bottom: 0; }
 
