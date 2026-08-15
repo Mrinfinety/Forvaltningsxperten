@@ -662,6 +662,24 @@ main.wrap{
   .innhold--bred section > p,
   .innhold--bred section > ul,
   .innhold--bred section > ol{ max-width: 640px; }
+
+  /* Delytelsene i to spalter */
+  .delt-grid{ display: grid; grid-template-columns: 1fr 1fr; column-gap: 46px; }
+
+  /* Kontaktsiden: skjema og kontaktinfo side om side */
+  .kontakt-rad{
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    column-gap: 56px;
+    align-items: start;
+  }
+  .kontakt-rad > section{ padding-top: 46px; }
+  /* Ingen skillelinje mellom spaltene – de står side om side, ikke over hverandre */
+  .kontakt-rad > section + section{ border-top: 0; }
+
+  /* Punktlister i guidene får bruke bredden */
+  .liste-bred{ max-width: none !important; columns: 2; column-gap: 46px; }
+  .liste-bred li{ break-inside: avoid; }
 }
 
 /* Fotobånd mellom seksjonene */
