@@ -627,6 +627,10 @@ body{ background: #221d19; }
   margin-top: auto;
   padding-bottom: 74px;
   max-width: 940px;
+  /* Må ha eksplisitt bredde: auto-margene fra .wrap gjør at et flex-barn
+     ikke strekker seg, men krymper til innholdet. Uten dette havner korte
+     overskrifter (f.eks. «Om oss») midtstilt, mens lange står til venstre. */
+  width: 100%;
 }
 .hero-tekst h1{
   max-width: none;
