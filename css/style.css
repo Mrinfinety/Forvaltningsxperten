@@ -665,6 +665,8 @@ main.wrap{
 
   /* Delytelsene i to spalter */
   .delt-grid{ display: grid; grid-template-columns: 1fr 1fr; column-gap: 46px; }
+  /* Nullstill toppmargen, ellers ligger første kort skjevt i forhold til naboen */
+  .delt-grid .deltjeneste:first-of-type{ margin-top: 0; }
 
   /* Kontaktsiden: skjema og kontaktinfo side om side */
   .kontakt-rad{
