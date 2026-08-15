@@ -290,6 +290,7 @@ main section + section{ border-top: 1px solid rgba(255, 255, 255, 0.14); }
 /* Tjeneste-blokk med ikon (forsiden) */
 .tjeneste{ margin-top: 34px; }
 .tjeneste h3{ margin-top: 0; }
+.tjeneste h2{ margin-top: 0; font-size: 1.2rem; }
 .tjeneste .tjeneste-ikon{ margin-bottom: 10px; }
 
 /* Liten versal-etikett over overskrifter (tjenester-siden) */
