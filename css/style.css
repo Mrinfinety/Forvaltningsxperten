@@ -542,17 +542,22 @@ button:disabled:hover{
   opacity: 1; transform: none; transition-delay: 0.34s;
 }
 
-/* Tjenestekortene løftes så vidt ved peking. */
+/* Kortene ligger som egne flater over sideflaten – dybde gjennom
+   høydeforskjell, ikke gjennom effekter. Løftes ved peking. */
 .tjeneste{
-  padding: 14px;
-  margin-left: -14px;
-  margin-right: -14px;
-  border-radius: 8px;
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  padding: 22px 22px 20px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.028);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.30);
+  transition: transform 0.3s ease, background-color 0.3s ease,
+              box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .tjeneste:hover{
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.035);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.055);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
 }
 
 /* Delytelsene får en hårfin bakgrunn ved peking. */
