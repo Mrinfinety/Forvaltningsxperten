@@ -758,8 +758,20 @@ main.wrap{
   position: relative; z-index: 2;
   max-width: 640px; margin: 0 auto; padding: 0 20px; width: 100%;
 }
-.band h2{ margin: 0 0 6px; }
-.band p{ margin: 0; color: #ded6c9; max-width: 48ch; }
+/* Teksten i fotobåndene må tåle å stå over et stort motiv – vanlig
+   h2-størrelse blir for spinkel her. */
+.band h2{
+  margin: 0 0 10px;
+  font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+  line-height: 1.2;
+}
+.band p{
+  margin: 0;
+  color: #eae3d8;
+  max-width: 46ch;
+  font-size: 1.14rem;
+  line-height: 1.55;
+}
 
 .site-footer{ background: #1b1714; }
 
