@@ -688,17 +688,28 @@ main.wrap{
 /* Fotobånd mellom seksjonene */
 .band{
   position: relative;
-  min-height: 260px;
+  min-height: 430px;
   display: flex;
   align-items: center;
   background-image: var(--foto);
   background-position: center;
   background-size: cover;
 }
+/* Bildet tones ut mot sideflaten i topp og bunn, så båndet ikke får
+   harde kanter. Båndet er gjort høyere slik at selve motivet ikke
+   blir mindre av at overgangen tar plass. */
 .band::after{
   content: "";
   position: absolute; inset: 0;
-  background: linear-gradient(rgba(18, 15, 13, 0.42), rgba(18, 15, 13, 0.62));
+  background: linear-gradient(
+    to bottom,
+    #171412 0%,
+    rgba(23, 20, 18, 0.72) 14%,
+    rgba(23, 20, 18, 0.46) 34%,
+    rgba(23, 20, 18, 0.46) 66%,
+    rgba(23, 20, 18, 0.72) 86%,
+    #171412 100%
+  );
 }
 .band-tekst{
   position: relative; z-index: 2;
@@ -716,7 +727,7 @@ main.wrap{
   .hero--stor{ min-height: 72vh; }
   .hero--liten{ min-height: 38vh; }
   .hero-tekst{ padding-bottom: 46px; }
-  .band{ min-height: 200px; }
+  .band{ min-height: 340px; }
 }
 
 /* ---------- Redusert bevegelse ---------- */
