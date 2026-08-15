@@ -167,6 +167,8 @@ li{ margin-bottom: 8px; }
   width: 56px;
   height: 56px;
   display: block;
+  /* Skygge så merket løfter seg fra fotoet uansett motiv */
+  filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.6));
 }
 
 .site-nav{
@@ -186,7 +188,7 @@ li{ margin-bottom: 8px; }
   left: -108px;  /* gjennom Fx-boksen (56px) og ~52px ut på venstresiden */
   right: -40px;  /* like langt ut på høyresiden forbi menyen */
   bottom: 8px;   /* i høyde med bunnen av Fx-bokstavene (inkl. x-ens strek) */
-  border-top: 1px solid #8e857c;
+  border-top: 2px solid #b0a698;
   z-index: 2;    /* tegnes oppå Fx-boksen så linjen går gjennom den */
   transform: scaleX(0);
   transform-origin: left;
@@ -591,8 +593,9 @@ body{ background: #171412; }
      teksten står og bildet skal gli over i sideflaten. */
   background: linear-gradient(
     to bottom,
-    rgba(20, 17, 15, 0.10) 0%,
-    rgba(20, 17, 15, 0.20) 42%,
+    rgba(20, 17, 15, 0.42) 0%,
+    rgba(20, 17, 15, 0.12) 18%,
+    rgba(20, 17, 15, 0.20) 45%,
     rgba(22, 19, 17, 0.72) 78%,
     rgba(23, 20, 18, 0.97) 100%
   );
