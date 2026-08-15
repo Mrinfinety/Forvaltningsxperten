@@ -188,7 +188,7 @@ li{ margin-bottom: 8px; }
   left: -108px;  /* gjennom Fx-boksen (56px) og ~52px ut på venstresiden */
   right: -40px;  /* like langt ut på høyresiden forbi menyen */
   bottom: 8px;   /* i høyde med bunnen av Fx-bokstavene (inkl. x-ens strek) */
-  border-top: 2px solid #b0a698;
+  border-top: 2px solid #6f665c;
   z-index: 2;    /* tegnes oppå Fx-boksen så linjen går gjennom den */
   transform: scaleX(0);
   transform-origin: left;
