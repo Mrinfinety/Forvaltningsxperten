@@ -547,7 +547,7 @@ button:disabled:hover{
 .tjeneste{
   padding: 22px 22px 20px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.028);
+  background: rgba(255, 255, 255, 0.055);
   border: 1px solid rgba(255, 255, 255, 0.07);
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.30);
   transition: transform 0.3s ease, background-color 0.3s ease,
@@ -555,7 +555,7 @@ button:disabled:hover{
 }
 .tjeneste:hover{
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.09);
   border-color: rgba(255, 255, 255, 0.14);
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
 }
@@ -574,7 +574,7 @@ button:disabled:hover{
    fotobånd deler opp lange sider. */
 
 body::before{ display: none; }
-body{ background: #171412; }
+body{ background: #221d19; }
 
 .hero{
   position: relative;
@@ -588,7 +588,7 @@ body{ background: #171412; }
 .hero--stor{ min-height: 84vh; }
 .hero--liten{ min-height: 42vh; }
 /* Uten foto – brukes på juridiske sider der bilde ikke hører hjemme */
-.hero--ren{ min-height: 0; background-image: none; background: #1d1917; }
+.hero--ren{ min-height: 0; background-image: none; background: #2a2521; }
 .hero--ren::after{ display: none; }
 .hero--ren .hero-tekst{ padding-top: 10px; padding-bottom: 40px; }
 .hero::after{
@@ -601,8 +601,8 @@ body{ background: #171412; }
     rgba(20, 17, 15, 0.42) 0%,
     rgba(20, 17, 15, 0.12) 18%,
     rgba(20, 17, 15, 0.20) 45%,
-    rgba(22, 19, 17, 0.72) 78%,
-    rgba(23, 20, 18, 0.97) 100%
+    rgba(32, 27, 23, 0.72) 78%,
+    rgba(34, 29, 25, 0.97) 100%
   );
 }
 .hero > *{ position: relative; z-index: 2; }
@@ -663,7 +663,7 @@ body{ background: #171412; }
 
 /* Innholdet står på solid flate – ingen boks, ingen uskarphet */
 main.wrap{
-  background: #171412;
+  background: #221d19;
   border: 0;
   border-radius: 0;
   box-shadow: none;
@@ -731,12 +731,12 @@ main.wrap{
   position: absolute; inset: 0;
   background: linear-gradient(
     to bottom,
-    #171412 0%,
-    rgba(23, 20, 18, 0.58) 15%,
-    rgba(23, 20, 18, 0.32) 36%,
-    rgba(23, 20, 18, 0.32) 64%,
-    rgba(23, 20, 18, 0.58) 85%,
-    #171412 100%
+    #221d19 0%,
+    rgba(34, 29, 25, 0.58) 15%,
+    rgba(34, 29, 25, 0.32) 36%,
+    rgba(34, 29, 25, 0.32) 64%,
+    rgba(34, 29, 25, 0.58) 85%,
+    #221d19 100%
   );
 }
 .band-tekst{
@@ -746,7 +746,7 @@ main.wrap{
 .band h2{ margin: 0 0 6px; }
 .band p{ margin: 0; color: #ded6c9; max-width: 48ch; }
 
-.site-footer{ background: #13100f; }
+.site-footer{ background: #1b1714; }
 
 @media (max-width: 640px){
   main.wrap{ padding: 0; margin: 0; border-radius: 0; }
