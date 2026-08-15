@@ -624,6 +624,18 @@ body{ background: #171412; }
   margin-bottom: 18px;
 }
 .hero-tekst p{ max-width: 58ch; color: #ded6c9; font-size: 1.06rem; }
+
+/* Tekst som ligger rett på foto løftes med skygge: en tett for
+   kantskarphet, en myk og bred for å løsne den fra motivet.
+   Gjelder ikke den rene toppen på personvernsiden. */
+.hero:not(.hero--ren) .hero-tekst h1,
+.hero:not(.hero--ren) .hero-tekst p,
+.hero:not(.hero--ren) .brand-name,
+.hero:not(.hero--ren) .site-nav a,
+.band h2,
+.band p{
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 3px 16px rgba(0, 0, 0, 0.55);
+}
 .hero--liten .hero-tekst{ padding-bottom: 44px; }
 .hero--liten .hero-tekst h1{ font-size: clamp(1.7rem, 4vw, 2.4rem); }
 
