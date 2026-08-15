@@ -560,6 +560,17 @@ button:disabled:hover{
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.42);
 }
 
+/* Uten boks: innholdet står rett på flaten, men beholder ikoner
+   og spalteoppsett. Brukes på Om oss. */
+.kort-grid--flat .tjeneste,
+.kort-grid--flat .tjeneste:hover{
+  background: none;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  transform: none;
+}
+
 /* Delytelsene får en hårfin bakgrunn ved peking. */
 .deltjeneste{
   transition: background-color 0.3s ease, color 0.25s ease;
