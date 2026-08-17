@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Personvernerklæring – Forvaltningsxperten</title>
-  <meta name="description" content="Personvernerklæring for forvaltningsxperten.no – hvilke personopplysninger vi samler inn via kontaktskjemaet, hvorfor, og dine rettigheter.">
+  <meta name="description" content="Personvernerklæring for forvaltningsxperten.no – hvilke personopplysninger vi samler inn via kontaktskjemaet og besøksstatistikken, hvorfor, og dine rettigheter.">
   <meta name="robots" content="noindex">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -68,7 +68,7 @@
       <li>Telefonnummer (valgfritt)</li>
       <li>Innholdet i meldingen din</li>
     </ul>
-    <p class="muted">Utover dette samler siden ikke inn personopplysninger automatisk. Vi bruker ingen informasjonskapsler (cookies), analyseverktøy eller sporing.</p>
+    <p class="muted">I tillegg samler siden inn anonym besøksstatistikk. Hva det er og hva som registreres, står i avsnittet om besøksstatistikk lenger ned.</p>
   </section>
 
   <section>
@@ -79,6 +79,7 @@
   <section>
     <h2>Hvem opplysningene deles med</h2>
     <p class="muted">Kontaktskjemaet sendes til vår egen server hos Vercel, som videresender innsendingen som e-post via tjenesten Resend til vår e-postkasse. E-posten mottas og oppbevares hos Google (Gmail). Vercel, Resend og Google er databehandlere som behandler opplysningene på våre vegne, og er lokalisert i USA.</p>
+    <p class="muted">Besøksstatistikken behandles av Vercel på våre vegne. Se avsnittet om besøksstatistikk.</p>
     <p class="muted">Vi deler ikke opplysningene dine med andre, og vi selger dem aldri videre.</p>
   </section>
 
@@ -89,7 +90,21 @@
 
   <section>
     <h2>Informasjonskapsler (cookies)</h2>
-    <p class="muted">Nettsiden bruker ingen informasjonskapsler eller sporingsteknologi.</p>
+    <p class="muted">Nettsiden bruker ingen informasjonskapsler. Vi lagrer heller ingenting annet i nettleseren din, og derfor spør vi deg ikke om samtykke til det.</p>
+  </section>
+
+  <section>
+    <h2>Besøksstatistikk</h2>
+    <p class="muted">For å se hvor mange som besøker siden, og hvilke sider de leser, bruker vi Vercel Web Analytics. Verktøyet bruker ingen informasjonskapsler og følger deg ikke videre til andre nettsteder. Besøkende kjennes igjen på en verdi som regnes ut fra selve forespørselen, og den forkastes etter 24 timer. IP-adressen din lagres ikke.</p>
+    <p class="muted">For hver sidevisning registreres:</p>
+    <ul>
+      <li>Tidspunkt</li>
+      <li>Adressen til siden som ble åpnet</li>
+      <li>Hvilket nettsted du eventuelt kom fra</li>
+      <li>Land, region og by</li>
+      <li>Operativsystem, nettleser og enhetstype (mobil, nettbrett eller PC)</li>
+    </ul>
+    <p class="muted">Vi ser bare samlet statistikk. Vi kan ikke følge én enkelt besøkende rundt på siden, og vi kobler ikke statistikken til henvendelser vi mottar. Behandlingsgrunnlaget er vår berettigede interesse i å vite hvordan nettsiden brukes (personvernforordningen artikkel 6 nr. 1 bokstav f).</p>
   </section>
 
   <section>
@@ -100,7 +115,7 @@
 
   <section>
     <h2>Endringer</h2>
-    <p class="muted">Vi kan oppdatere denne erklæringen ved behov. Sist oppdatert: juli 2026.</p>
+    <p class="muted">Vi kan oppdatere denne erklæringen ved behov. Sist oppdatert: august 2026.</p>
   </section>
   </div>
 
@@ -119,5 +134,7 @@
 </footer>
 
 <script src="js/site.js" defer></script>
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
