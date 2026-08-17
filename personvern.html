@@ -68,7 +68,7 @@
       <li>Telefonnummer (valgfritt)</li>
       <li>Innholdet i meldingen din</li>
     </ul>
-    <p class="muted">I tillegg samler siden inn anonym besøksstatistikk. Hva det er og hva som registreres, står i avsnittet om besøksstatistikk lenger ned.</p>
+    <p class="muted">I tillegg samler siden inn anonym besøksstatistikk og måler hvor raskt sidene laster. Hva som registreres, står i eget avsnitt lenger ned.</p>
   </section>
 
   <section>
@@ -79,7 +79,7 @@
   <section>
     <h2>Hvem opplysningene deles med</h2>
     <p class="muted">Kontaktskjemaet sendes til vår egen server hos Vercel, som videresender innsendingen som e-post via tjenesten Resend til vår e-postkasse. E-posten mottas og oppbevares hos Google (Gmail). Vercel, Resend og Google er databehandlere som behandler opplysningene på våre vegne, og er lokalisert i USA.</p>
-    <p class="muted">Besøksstatistikken behandles av Vercel på våre vegne. Se avsnittet om besøksstatistikk.</p>
+    <p class="muted">Besøksstatistikken og hastighetsmålingene behandles av Vercel på våre vegne. Se avsnittet om besøksstatistikk og hastighetsmåling.</p>
     <p class="muted">Vi deler ikke opplysningene dine med andre, og vi selger dem aldri videre.</p>
   </section>
 
@@ -94,7 +94,7 @@
   </section>
 
   <section>
-    <h2>Besøksstatistikk</h2>
+    <h2>Besøksstatistikk og hastighetsmåling</h2>
     <p class="muted">For å se hvor mange som besøker siden, og hvilke sider de leser, bruker vi Vercel Web Analytics. Verktøyet bruker ingen informasjonskapsler og følger deg ikke videre til andre nettsteder. Besøkende kjennes igjen på en verdi som regnes ut fra selve forespørselen, og den forkastes etter 24 timer. IP-adressen din lagres ikke.</p>
     <p class="muted">For hver sidevisning registreres:</p>
     <ul>
@@ -104,7 +104,12 @@
       <li>Land, region og by</li>
       <li>Operativsystem, nettleser og enhetstype (mobil, nettbrett eller PC)</li>
     </ul>
-    <p class="muted">Vi ser bare samlet statistikk. Vi kan ikke følge én enkelt besøkende rundt på siden, og vi kobler ikke statistikken til henvendelser vi mottar. Behandlingsgrunnlaget er vår berettigede interesse i å vite hvordan nettsiden brukes (personvernforordningen artikkel 6 nr. 1 bokstav f).</p>
+    <p class="muted">Vi bruker også Vercel Speed Insights, som måler hvor raskt sidene laster hos deg, slik at vi kan rette opp det som er tregt. Heller ikke dette verktøyet bruker informasjonskapsler, og målingene kan ikke følges fra side til side. I tillegg til punktene over registreres:</p>
+    <ul>
+      <li>Hvor lang tid siden brukte på å vises, og hvilket element som var tregest</li>
+      <li>Omtrentlig nettverkshastighet (for eksempel 4g)</li>
+    </ul>
+    <p class="muted">Vi ser bare samlet statistikk. Vi kan ikke følge én enkelt besøkende rundt på siden, og vi kobler ikke statistikken til henvendelser vi mottar. Behandlingsgrunnlaget for begge verktøyene er vår berettigede interesse i å vite hvordan nettsiden brukes og fungerer (personvernforordningen artikkel 6 nr. 1 bokstav f).</p>
   </section>
 
   <section>
@@ -136,5 +141,7 @@
 <script src="js/site.js" defer></script>
 <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>window.si = window.si || function () { (window.siq = window.siq || []).push(arguments); };</script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
 </body>
 </html>
