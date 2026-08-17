@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Toppbildet er LCP-elementet. Preload gjør at nettleseren finner det
+       i HTML-en, ikke først etter at stilarket er tolket. -->
+  <link rel="preload" as="image" href="/img/bakgrunn.webp" fetchpriority="high">
   <title>Forvaltningsxperten – eiendomsforvaltning og regnskap i Kristiansand og Agder</title>
   <meta name="description" content="Forvaltningsxperten tilbyr eiendomsforvaltning og regnskap for sameier, borettslag og mindre næringseiendommer i Kristiansand og Agder.">
   <link rel="canonical" href="https://www.forvaltningsxperten.no/">
