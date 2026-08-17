@@ -20,49 +20,6 @@ body{
   min-height: 100vh;
 }
 
-/* Bakgrunnsbilde: synlig luftfoto med et mørkt slør over, slik at
-   de lyse tekstflatene står tydelig frem. Fast posisjonert lag i
-   stedet for background-attachment: fixed (upålitelig på mobil). */
-body::before{
-  content: "";
-  position: fixed;
-  inset: -12px;
-  z-index: -1;
-  background-color: #211d1a;
-  background-image:
-    linear-gradient(rgba(24, 20, 17, 0.28), rgba(24, 20, 17, 0.50)),
-    url("../img/bakgrunn.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  animation: bg-driv 60s ease-in-out infinite alternate;
-}
-
-/* Egen bakgrunn per side – alle unike, sylskarpe Sørlands-motiver:
-   forside = luftfoto (bakgrunn.webp), tjenester = kontorbygg,
-   om oss = bygate, kontakt = havn. */
-body.side-tjenester::before{
-  background-image:
-    linear-gradient(rgba(24, 20, 17, 0.28), rgba(24, 20, 17, 0.50)),
-    url("../img/tjenester-bg.webp");
-}
-body.side-om::before{
-  background-image:
-    linear-gradient(rgba(24, 20, 17, 0.28), rgba(24, 20, 17, 0.50)),
-    url("../img/om-oss-bg.webp");
-}
-body.side-kontakt::before{
-  background-image:
-    linear-gradient(rgba(24, 20, 17, 0.28), rgba(24, 20, 17, 0.50)),
-    url("../img/kontakt-bg.webp");
-}
-
-/* Umerkelig, sakte driv i bakgrunnsbildet */
-@keyframes bg-driv{
-  from{ transform: scale(1); }
-  to{ transform: scale(1.07); }
-}
-
 .wrap{
   max-width: 640px;
   margin: 0 auto;
@@ -142,10 +99,6 @@ li{ margin-bottom: 8px; }
 /* ---------- Topp: logoboksen med menyen stående på logolinjen ---------- */
 
 .site-header{
-  background: rgba(26, 22, 19, 0.78);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding: 26px 0 24px;
   overflow-x: hidden;
   overflow-x: clip; /* klipper logolinjens forlengelse så den ikke gir horisontal scroll */
@@ -266,17 +219,6 @@ li{ margin-bottom: 8px; }
 
 /* ---------- Innhold: mørk gjennomsiktig firkant rundt teksten ---------- */
 
-main.wrap{
-  background: rgba(26, 22, 19, 0.78);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  padding: 10px 36px 44px;
-  margin: 36px auto 72px;
-  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.45);
-}
-
 main section{ padding: 46px 0; }
 main section + section{ border-top: 1px solid rgba(255, 255, 255, 0.14); }
 
@@ -294,17 +236,6 @@ main section + section{ border-top: 1px solid rgba(255, 255, 255, 0.14); }
 .tjeneste h3{ margin-top: 0; }
 .tjeneste h2{ margin-top: 0; font-size: 1.2rem; }
 .tjeneste .tjeneste-ikon{ margin-bottom: 10px; }
-
-/* Liten versal-etikett over overskrifter (tjenester-siden) */
-.eyebrow{
-  display: block;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #cdbfa4;
-  margin-bottom: 10px;
-}
 
 /* Delytelser: ryddig liste med hårfine skillelinjer, firkant-merke
    (som logoen) og myk overgang ved peking. */
@@ -366,11 +297,6 @@ main section + section{ border-top: 1px solid rgba(255, 255, 255, 0.14); }
 [id]{ scroll-margin-top: 24px; }
 
 @media (max-width: 640px){
-  main.wrap{
-    padding: 6px 22px 36px;
-    margin: 18px auto 40px;
-    border-radius: 10px;
-  }
   main section{ padding: 38px 0; }
 }
 
@@ -472,9 +398,6 @@ button:disabled:hover{
 /* ---------- Bunn: mørk gjennomsiktig stripe ---------- */
 
 .site-footer{
-  background: rgba(26, 22, 19, 0.78);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
   padding: 14px 0 16px;
   font-size: 0.82rem;
@@ -584,7 +507,6 @@ button:disabled:hover{
    Hver side har et toppbilde, innholdet står på solid flate, og
    fotobånd deler opp lange sider. */
 
-body::before{ display: none; }
 body{ background: #221d19; }
 
 .hero{
@@ -789,7 +711,6 @@ main.wrap{
 
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
-  body::before{ animation: none; }
   .site-nav::after{ animation: none; transform: none; }
   .js main section{ opacity: 1; transform: none; transition: none; }
   .js main section .tjeneste,
