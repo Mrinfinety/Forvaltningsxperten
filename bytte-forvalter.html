@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Toppbildet er LCP-elementet. Preload gjør at nettleseren finner det
        i HTML-en, ikke først etter at stilarket er tolket. -->
-  <link rel="preload" as="image" href="/img/hero-bytte.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/img/hero-bytte-m.webp" fetchpriority="high" media="(max-width: 700px)">
+  <link rel="preload" as="image" href="/img/hero-bytte.webp" fetchpriority="high" media="(min-width: 701px)">
   <title>Hvordan bytte eiendomsforvalter – Forvaltningsxperten</title>
   <meta name="description" content="Slik bytter sameiet eller borettslaget forretningsfører: oppsigelsesfrist, hvem som bestemmer, hva som skal overføres og når på året det passer best.">
   <link rel="canonical" href="https://www.forvaltningsxperten.no/bytte-forvalter.html">
@@ -35,7 +36,7 @@
 
 <a class="skip-link" href="#innhold">Hopp til innhold</a>
 
-<header class="hero hero--liten" style="--foto: url('/img/hero-bytte.webp')">
+<header class="hero hero--liten" style="--foto: url('/img/hero-bytte.webp'); --foto-m: url('/img/hero-bytte-m.webp')">
   <div class="site-header">
   <div class="wrap header-top">
     <a class="brand-logo" href="index.html" aria-label="Forvaltningsxperten – til forsiden">

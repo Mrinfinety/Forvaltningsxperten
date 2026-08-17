@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Toppbildet er LCP-elementet. Preload gjør at nettleseren finner det
        i HTML-en, ikke først etter at stilarket er tolket. -->
-  <link rel="preload" as="image" href="/img/bakgrunn.webp" fetchpriority="high">
+  <link rel="preload" as="image" href="/img/bakgrunn-m.webp" fetchpriority="high" media="(max-width: 700px)">
+  <link rel="preload" as="image" href="/img/bakgrunn.webp" fetchpriority="high" media="(min-width: 701px)">
   <title>Forvaltningsxperten – eiendomsforvaltning og regnskap i Kristiansand og Agder</title>
   <meta name="description" content="Forvaltningsxperten tilbyr eiendomsforvaltning og regnskap for sameier, borettslag og mindre næringseiendommer i Kristiansand og Agder.">
   <link rel="canonical" href="https://www.forvaltningsxperten.no/">
@@ -69,7 +70,7 @@
 
 <a class="skip-link" href="#innhold">Hopp til innhold</a>
 
-<header class="hero hero--stor" style="--foto: url('/img/bakgrunn.webp')">
+<header class="hero hero--stor" style="--foto: url('/img/bakgrunn.webp'); --foto-m: url('/img/bakgrunn-m.webp')">
   <div class="site-header">
   <div class="wrap header-top">
     <a class="brand-logo" href="index.html" aria-label="Forvaltningsxperten – til forsiden">
@@ -132,7 +133,7 @@
 
   </div>
 
-  <div class="band" style="--foto: url('/img/band-hvem.webp')">
+  <div class="band" style="--foto: url('/img/band-hvem.webp'); --foto-m: url('/img/band-hvem-m.webp')">
     <div class="band-tekst">
       <h2>Hvem vi jobber for</h2>
       <p>Sameier, borettslag og mindre næringsbygg i Kristiansand og Agder.</p>
@@ -188,7 +189,7 @@
 
   </div>
 
-  <div class="band" style="--foto: url('/img/band-slik.webp')">
+  <div class="band" style="--foto: url('/img/band-slik.webp'); --foto-m: url('/img/band-slik-m.webp')">
     <div class="band-tekst">
       <h2>Slik jobber vi</h2>
       <p>Én fast kontaktperson, tydelig rapportering og avtaler uten overraskelser.</p>
