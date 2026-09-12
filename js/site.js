@@ -87,6 +87,8 @@
    seg opp bare i midtpartiet. Uten platået ligger to bilder oppaa hverandre
    hele veien, og ingen av dem blir sett.
 
+   Samme tall driver fremdriftsstreken oeverst.
+
    Egen IIFE fordi skriptet over avslutter tidlig paa sider uten
    kontaktskjema. */
 (function () {
@@ -96,6 +98,9 @@
   var bilder = Array.prototype.slice.call(document.querySelectorAll(".gj-bilde"));
   if (!stopp.length || stopp.length !== bilder.length) { return; }
 
+  var tekst = document.querySelector(".gj-tekst");
+  var strek = document.querySelector(".gj-fremdrift");
+  var fyll = strek ? strek.querySelector("span") : null;
   var roligere = window.matchMedia("(prefers-reduced-motion: reduce)");
   var planlagt = false;
 
@@ -137,6 +142,20 @@
         /* sakte drift saa bildet aldri staar helt stille */
         bilder[i].style.transform = "scale(" + (1.06 - avstand[i] * 0.05).toFixed(4) + ")";
       }
+    }
+
+    if (fyll) {
+      var del = stopp.length > 1 ? (n + t) / (stopp.length - 1) : 1;
+      if (del < 0) { del = 0; }
+      if (del > 1) { del = 1; }
+      fyll.style.transform = "scaleX(" + del.toFixed(4) + ")";
+
+      /* Streken vises forst naar gjennomgangen har tatt over skjermen. Med
+         0.5 slo den inn allerede paa toppen, fordi gjennomgangen begynner
+         omtrent midt i forste skjermbilde paa mobil. */
+      var tr = tekst.getBoundingClientRect();
+      var inne = tr.top < h * 0.15 && tr.bottom > h * 0.5;
+      strek.classList.toggle("er-inne", inne);
     }
   }
 

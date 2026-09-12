@@ -60,12 +60,13 @@
 
 <div class="gjennomgang">
 
-  <!-- Bildestabelen ligger fast mens teksten ruller forbi, men bare på brede
-       skjermer. På mobil er den display:none – da lastes den ikke i det hele
-       tatt – og hvert stopp bruker sitt eget bakgrunnsbilde i stedet.
-       Bildene er bakgrunner og ikke <img> nettopp for å få den styringen.
-       NB: url() i en CSS-variabel løses relativt til STILARKET, så stiene
-       må være absolutte (/img/...), ikke relative. -->
+  <!-- Bildestabelen ligger fast og fyller skjermen. Bildene er CSS-bakgrunner
+       og ikke <img>, slik at stilarket kan velge stor eller liten variant per
+       skjermbredde – da lastes bare den ene.
+       NB: url() i en CSS-variabel løses relativt til STILARKET, så stiene må
+       være absolutte (/img/...), ikke relative. -->
+  <div class="gj-fremdrift" aria-hidden="true"><span></span></div>
+
   <div class="gj-bilder" aria-hidden="true">
     <div class="gj-bilde" data-stopp="1" style="--foto: url('/img/gj-1-tak.jpg'); --foto-m: url('/img/gj-1-tak-m.jpg')"></div>
     <div class="gj-bilde" data-stopp="2" style="--foto: url('/img/gj-2-fasade.jpg'); --foto-m: url('/img/gj-2-fasade-m.jpg')"></div>
@@ -81,10 +82,10 @@
 
     <section class="gj-stopp" data-stopp="1">
       <div class="gj-panel">
-      <p class="gj-nr">01 – Taket</p>
+      <p class="gj-nr">01 / 08 – Taket</p>
       <h2>Det dyreste som kan overraske dere</h2>
-      <p class="muted">En tekking har begrenset levetid, og den ryker ikke på én dag. Den blir gradvis dårligere til noen oppdager en flekk i taket i øverste etasje. Da er skaden som regel eldre enn flekken.</p>
-      <p class="muted">Vi holder rede på alderen, ser etter tegnene i god tid, og legger kostnaden inn i vedlikeholdsplanen mens det fortsatt er mulig å spare til den.</p>
+      <p class="muted">En tekking ryker ikke på én dag. Den blir gradvis dårligere til noen oppdager en flekk i taket i øverste etasje – og da er skaden eldre enn flekken.</p>
+      <p class="muted">Vi følger med på alderen og legger kostnaden inn i vedlikeholdsplanen mens det fortsatt er mulig å spare til den.</p>
       <ul class="gj-liste">
         <li>Alder og forventet levetid på tekkingen</li>
         <li>Beslag, renner og nedløp</li>
@@ -96,7 +97,7 @@
 
     <section class="gj-stopp" data-stopp="2">
       <div class="gj-panel">
-      <p class="gj-nr">02 – Fasade og vinduer</p>
+      <p class="gj-nr">02 / 08 – Fasade og vinduer</p>
       <h2>Det er ikke malingen som koster</h2>
       <p class="muted">Fasaden er det alle ser, og det første en kjøper vurderer. Men utgiften ligger sjelden i malingen. Den ligger i fukten som kom inn der malingen slapp for tre år siden.</p>
       <p class="muted">Vi vurderer om det lønner seg å ta hele veggen nå eller flikke videre, og hva det betyr for budsjettet begge veier.</p>
@@ -111,7 +112,7 @@
 
     <section class="gj-stopp" data-stopp="3">
       <div class="gj-panel">
-      <p class="gj-nr">03 – Oppgang og fellesareal</p>
+      <p class="gj-nr">03 / 08 – Oppgang og fellesareal</p>
       <h2>Der irritasjonen samler seg</h2>
       <p class="muted">Lyspærer som ikke blir byttet, en dør som ikke lukker seg, en skade ingen melder fra om. Hver for seg småting. Til sammen er det dette folk mener når de sier at det ikke fungerer.</p>
       <p class="muted">Vi tar imot meldingene, sender riktig håndverker, og passer på at skader som dekkes av forsikringen faktisk blir meldt i tide.</p>
@@ -126,38 +127,38 @@
 
     <section class="gj-stopp" data-stopp="4">
       <div class="gj-panel">
-      <p class="gj-nr">04 – Teknisk rom</p>
+      <p class="gj-nr">04 / 08 – Teknisk rom</p>
       <h2>Døra de færreste i styret har åpnet</h2>
       <p class="muted">Ventilasjon, varme, pumper og beredere. Mye av det har serviceavtaler som løper videre år etter år, og det er ikke alltid noen har lest hva de dekker.</p>
-      <p class="muted">Vi holder oversikt over avtalene, når de går ut, og hvem som faktisk rykker ut når noe stopper en fredag ettermiddag.</p>
+      <p class="muted">Vi holder oversikt over avtalene, og over hvem som faktisk rykker ut når noe stopper en fredag ettermiddag.</p>
       <ul class="gj-liste">
         <li>Ventilasjonsanlegg og filterbytte</li>
         <li>Varmeanlegg, beredere og sirkulasjonspumper</li>
         <li>Serviceavtaler: omfang, pris og utløpsdato</li>
-        <li>Hvem som kontaktes ved driftsstans, og hva det koster utenom arbeidstid</li>
+        <li>Hva utrykning utenom arbeidstid koster</li>
       </ul>
       </div>
     </section>
 
     <section class="gj-stopp" data-stopp="5">
       <div class="gj-panel">
-      <p class="gj-nr">05 – El og brannsikkerhet</p>
+      <p class="gj-nr">05 / 08 – El og brannsikkerhet</p>
       <h2>Den delen som ikke er valgfri</h2>
-      <p class="muted">Internkontroll er lovpålagt for boligselskap. Ansvaret ligger hos styret, og det skal kunne dokumenteres skriftlig. Det holder ikke at rutinene sitter i hodet på én person.</p>
-      <p class="muted">Vi setter opp dokumentasjonen og holder den levende, slik at den finnes den dagen noen spør etter den.</p>
+      <p class="muted">Internkontroll er lovpålagt for boligselskap. Ansvaret ligger hos styret, og det skal kunne dokumenteres skriftlig.</p>
+      <p class="muted">Vi setter opp dokumentasjonen og holder den levende, så den finnes den dagen noen spør.</p>
       <ul class="gj-liste">
         <li>Internkontroll og HMS-dokumentasjon</li>
         <li>Brannvarsling, slokkeutstyr og frie rømningsveier</li>
         <li>Kontroll av fellesanlegget for el</li>
         <li>Rutiner som er skrevet ned, ikke bare avtalt muntlig</li>
       </ul>
-      <p class="muted"><a href="hms-sameie-borettslag.html">Mer om HMS og internkontroll i sameier og borettslag</a></p>
+      <p class="muted"><a href="hms-sameie-borettslag.html">Mer om HMS og internkontroll</a></p>
       </div>
     </section>
 
     <section class="gj-stopp" data-stopp="6">
       <div class="gj-panel">
-      <p class="gj-nr">06 – Kjeller og boder</p>
+      <p class="gj-nr">06 / 08 – Kjeller og boder</p>
       <h2>Der problemer får stå i fred lengst</h2>
       <p class="muted">Fukt lukter før den synes. Et avløp som går tregt er sjelden tregt bare én gang. Og bodene fylles med ting ingen vil kjennes ved den dagen brannvesenet kommer på tilsyn.</p>
       <ul class="gj-liste">
@@ -171,7 +172,7 @@
 
     <section class="gj-stopp" data-stopp="7">
       <div class="gj-panel">
-      <p class="gj-nr">07 – Uteområdet</p>
+      <p class="gj-nr">07 / 08 – Uteområdet</p>
       <h2>Det medlemmene bruker mest</h2>
       <p class="muted">Uteområdet er det første folk møter og det siste styret rekker å tenke på. Det er også der ansvaret blir tydeligst den dagen noen sklir.</p>
       <ul class="gj-liste">
@@ -185,17 +186,17 @@
 
     <section class="gj-stopp" data-stopp="8">
       <div class="gj-panel">
-      <p class="gj-nr">08 – Over det hele</p>
+      <p class="gj-nr">08 / 08 – Over det hele</p>
       <h2>Økonomien</h2>
-      <p class="muted">Ingenting av det over betyr noe hvis pengene ikke er der når regningen kommer. Derfor henger drift og regnskap sammen hos oss – det er de samme tallene.</p>
+      <p class="muted">Ingenting av det over betyr noe hvis pengene ikke er der når regningen kommer. Drift og regnskap er de samme tallene.</p>
       <p class="muted">Vi fører regnskapet selv, og Regnskap Kristiansand AS står som autorisert regnskapsfører for oppdragene.</p>
       <ul class="gj-liste">
-        <li>Budsjett og felleskostnader som henger sammen med vedlikeholdsplanen</li>
+        <li>Budsjett og felleskostnader</li>
         <li>Løpende regnskap, bilag og restanser</li>
-        <li>Vedlikeholdsplan med kostnad og årstall, ikke bare gode intensjoner</li>
-        <li>Årsmøte, protokoll og rapportering til styret underveis</li>
+        <li>Vedlikeholdsplan med kostnad og årstall</li>
+        <li>Årsmøte, protokoll og rapportering til styret</li>
       </ul>
-      <p class="muted"><a href="kontakt.html">Ta kontakt om dere vil vite hva dette koster for deres bygg</a></p>
+      <p class="muted"><a href="kontakt.html">Hva koster dette for deres bygg?</a></p>
       </div>
     </section>
 
