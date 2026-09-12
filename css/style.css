@@ -102,8 +102,8 @@ li{ margin-bottom: 8px; }
    Oppbygningen følger logoutkastet: Fx, kort strek, navnet – og menyen
    nederst, der fagområdene sto i utkastet. */
 .site-header{
-  background: #14110f;
-  padding: 30px 0 24px;
+  background: #221d19;
+  padding: 30px 0 26px;
 }
 
 .merke{
@@ -172,20 +172,23 @@ li{ margin-bottom: 8px; }
 .site-nav{
   display: flex;
   align-items: baseline;
+  gap: 34px;
   line-height: 1;
-  margin-top: 15px;
-  margin-right: -0.26em;
+  margin-top: 28px;
+  margin-right: -0.16em;
 }
 
 .site-nav a{
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.26em;
-  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: #b6ada1;
+  color: #ddd5c9;
   white-space: nowrap;
+  /* Egen høyde rundt teksten så punktet er lett å treffe med finger */
+  padding: 6px 0;
 }
 .site-nav a:hover{ color: #ffffff; }
 .site-nav a[aria-current="page"]{ color: #ffffff; }
@@ -195,8 +198,8 @@ li{ margin-bottom: 8px; }
   content: "";
   position: absolute;
   left: 0;
-  right: 0.26em;
-  bottom: -6px;
+  right: 0.16em;
+  bottom: 1px;
   height: 1px;
   background: currentColor;
   transform: scaleX(0);
@@ -206,27 +209,21 @@ li{ margin-bottom: 8px; }
 .site-nav a:hover::after{ transform: scaleX(1); }
 .site-nav a[aria-current="page"]::after{ transform: scaleX(1); }
 
-.site-nav .skille{
-  margin: 0 0.85em 0 0.6em;
-  font-size: 0.72rem;
-  color: #7a7268;
-}
 
 @media (max-width: 560px){
   .site-header{ padding: 26px 0 20px; }
   .logo-mark{ font-size: 50px; -webkit-text-stroke-width: 1.5px; }
   .logo-strek{ width: 82px; margin: 2px 0 6px; }
   .brand-name{ letter-spacing: 0.2em; margin-right: -0.2em; }
-  .site-nav{ margin-top: 13px; margin-right: -0.18em; }
-  .site-nav a{ font-size: 0.63rem; letter-spacing: 0.18em; }
-  .site-nav a::after{ right: 0.18em; }
-  .site-nav .skille{ margin: 0 0.55em 0 0.4em; font-size: 0.63rem; }
+  .site-nav{ gap: 24px; margin-top: 24px; margin-right: -0.12em; }
+  .site-nav a{ font-size: 0.84rem; letter-spacing: 0.12em; }
+  .site-nav a::after{ right: 0.12em; }
 }
 
 @media (max-width: 360px){
   .logo-mark{ font-size: 45px; }
-  .site-nav a{ font-size: 0.58rem; letter-spacing: 0.14em; }
-  .site-nav .skille{ margin: 0 0.4em 0 0.28em; }
+  .site-nav{ gap: 18px; }
+  .site-nav a{ font-size: 0.78rem; letter-spacing: 0.1em; }
 }
 
 /* ---------- Innhold: mørk gjennomsiktig firkant rundt teksten ---------- */
@@ -533,7 +530,7 @@ body{ background: #221d19; }
 .hero--stor{ min-height: 66vh; }
 .hero--liten{ min-height: 42vh; }
 /* Uten foto – brukes på juridiske sider der bilde ikke hører hjemme */
-.hero--ren{ min-height: 0; background-image: none; background: #14110f; }
+.hero--ren{ min-height: 0; background-image: none; background: #221d19; }
 .hero--ren::after{ display: none; }
 .hero--ren .hero-tekst{ padding-top: 10px; padding-bottom: 40px; }
 .hero::after{
@@ -544,9 +541,9 @@ body{ background: #221d19; }
      bildet skal gli over i sideflaten. */
   background: linear-gradient(
     to bottom,
-    rgba(20, 17, 15, 1) 0%,
-    rgba(20, 17, 15, 0.88) 4%,
-    rgba(20, 17, 15, 0.46) 12%,
+    rgba(34, 29, 25, 1) 0%,
+    rgba(34, 29, 25, 0.88) 4%,
+    rgba(34, 29, 25, 0.46) 12%,
     rgba(20, 17, 15, 0.12) 24%,
     rgba(20, 17, 15, 0.20) 45%,
     rgba(32, 27, 23, 0.72) 78%,
