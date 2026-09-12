@@ -116,12 +116,21 @@ li{ margin-bottom: 8px; }
   flex: none;
 }
 
+/* Fx-merket i antikva med hul kontur, som ordmerket under. Satt som
+   tekst og ikke SVG: da flukter venstrekanten med navnet nedenfor
+   uansett hvilken systemserif nettleseren velger. */
 .logo-mark{
-  width: 56px;
-  height: 56px;
   display: block;
-  /* Skygge så merket løfter seg fra fotoet uansett motiv */
-  filter: drop-shadow(0 2px 7px rgba(0, 0, 0, 0.6));
+  font-family: ui-serif, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  font-size: 68px;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: transparent;
+  -webkit-text-stroke: 1.6px #f2eee6;
+  /* drop-shadow følger konturen; text-shadow ville tegnet skyggen av
+     hele bokstavflaten og fylt igjen det hule. */
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
 }
 
 .site-nav{
@@ -132,15 +141,14 @@ li{ margin-bottom: 8px; }
   padding: 0 12px 12px 22px;
 }
 
-/* Logolinjen: går tvers gjennom Fx-boksen (i høyde med bunnen av
-   Fx-bokstavene, så de står på linjen) og litt ut til høyre forbi
-   menyen. Tegnes rolig ved innlasting. */
+/* Logolinjen: går like under Fx-merket og videre ut til høyre forbi
+   menyen, som står på den. Tegnes rolig ved innlasting. */
 .site-nav::after{
   content: "";
   position: absolute;
-  left: -108px;  /* gjennom Fx-boksen (56px) og ~52px ut på venstresiden */
+  left: -126px;  /* forbi Fx-merket og litt ut på venstresiden */
   right: -40px;  /* like langt ut på høyresiden forbi menyen */
-  bottom: 8px;   /* i høyde med bunnen av Fx-bokstavene (inkl. x-ens strek) */
+  bottom: 8px;   /* like under bunnen av Fx-bokstavene */
   border-top: 3px solid #6f665c;
   z-index: 2;    /* tegnes oppå Fx-boksen så linjen går gjennom den */
   transform: scaleX(0);
@@ -186,29 +194,49 @@ li{ margin-bottom: 8px; }
   text-decoration: none;
 }
 
+/* Ordmerket i samme antikva som Fx, med luft mellom bokstavene.
+   Sto tidligere i sans for å matche det geometriske Fx-merket –
+   nå som merket er antikva, følger navnet etter. */
 .brand-name{
   display: block;
-  margin-top: 14px;
+  margin-top: 16px;
+  font-family: ui-serif, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.3em;
   font-size: 1.05rem;
   font-weight: 600;
   color: #f2eee6;
   white-space: nowrap;
 }
+
+/* Fagområdene under navnet, tilbaketrukket i grått */
+.brand-tagline{
+  display: block;
+  margin-top: 7px;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  font-size: 0.66rem;
+  font-weight: 500;
+  color: #c8bfb2;
+  white-space: nowrap;
+}
 .brand:hover .brand-name{ color: #ffffff; }
 
 @media (max-width: 480px){
-  .logo-mark{ width: 46px; height: 46px; }
+  .logo-mark{ font-size: 48px; -webkit-text-stroke-width: 1.3px; }
   .site-nav{ gap: 18px; padding: 0 8px 10px 14px; }
   /* På mobil: dropp transform/animasjon på linjen. En transformert
      hårlinje over en backdrop-filter-header kan forsvinne ved scroll
      og ikke males på nytt. Statisk linje er robust. */
-  .site-nav::after{ left: -98px; bottom: 7px; animation: none; transform: none; }
+  .site-nav::after{ left: -96px; bottom: 7px; animation: none; transform: none; }
   .site-nav a{ font-size: 0.98rem; }
   .brand-name{
     font-size: 0.9rem;
     letter-spacing: 0.18em;
+  }
+  .brand-tagline{
+    font-size: 0.6rem;
+    letter-spacing: 0.26em;
   }
 }
 
@@ -568,6 +596,7 @@ body{ background: #221d19; }
 .hero:not(.hero--ren) .hero-tekst h1,
 .hero:not(.hero--ren) .hero-tekst p,
 .hero:not(.hero--ren) .brand-name,
+.hero:not(.hero--ren) .brand-tagline,
 .hero:not(.hero--ren) .site-nav a,
 .band h2,
 .band p{
