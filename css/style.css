@@ -739,3 +739,123 @@ main.wrap{
   button:active{ transform: none; }
   *, *::before, *::after{ transition: none !important; }
 }
+
+/* ---------- Gjennomgang av bygget ---------- */
+
+/* Mobil forst: hvert stopp staar paa sitt eget foto. Bildestabelen er
+   display:none her, og da lastes de store bildene ikke i det hele tatt -
+   derfor er bildene bakgrunner og ikke <img>. */
+.gj-stopp{
+  position: relative;
+  isolation: isolate;
+  padding: 52px 20px 56px;
+  background-image: var(--foto-m);
+  background-size: cover;
+  background-position: center;
+}
+.gj-stopp > *{
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Slor som gjor teksten lesbar uansett motiv. Ligger over bakgrunnen,
+   under innholdet. */
+.gj-stopp::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 17, 15, 0.86),
+    rgba(20, 17, 15, 0.92)
+  );
+}
+
+.gj-bilder{ display: none; }
+
+.gj-nr{
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #a79d8f;
+  margin: 0 0 10px;
+}
+
+.gj-liste{
+  margin: 20px 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+.gj-liste li{
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 9px;
+  color: #c8bfb2;
+}
+/* Kort strek i stedet for kule - samme sprak som logolinjen */
+.gj-liste li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 10px;
+  height: 1px;
+  background: #8a8279;
+}
+
+/* Brede skjermer: bildet staar fast i venstre spalte mens teksten ruller
+   i hoyre. To spalter er hele poenget - da kan ikke teksten legge seg
+   oppaa bildet slik den ville gjort med en klistret stripe over. */
+@media (min-width: 900px){
+  .gjennomgang{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .gj-bilder{
+    display: block;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    background: #1b1714;
+  }
+
+  .gj-bilde{
+    position: absolute;
+    inset: 0;
+    background-image: var(--foto);
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.7s ease;
+  }
+  .gj-bilde.er-aktiv{ opacity: 1; }
+
+  /* Uten JS blir det forste bildet staaende. Teksten er innholdet. */
+
+  .gj-stopp{
+    background-image: none;
+    padding: 10vh 52px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .gj-stopp::before{ display: none; }
+  .gj-stopp > *{ max-width: 480px; margin-left: 0; margin-right: 0; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  .gj-bilde{ transition: none; }
+}
+
+/* Innledningsanimasjonen lenger oppe faser inn h1 og de TO forste avsnittene
+   i forste seksjon paa siden. Forste stopp har tre avsnitt (nummeret er ogsaa
+   en <p>), og det tredje ble staaende paa opacity 0 for alltid. Gjennomgangen
+   melder seg av den animasjonen - seksjonen faser uansett inn som helhet. */
+.js main section.gj-stopp > p{ opacity: 1; transform: none; }

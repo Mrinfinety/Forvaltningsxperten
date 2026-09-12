@@ -77,3 +77,31 @@
       });
   });
 })();
+
+/* Gjennomgangen av bygget: bytter det faste bildet etter hvilket stopp som
+   passerer midten av skjermen. Egen IIFE fordi skriptet over avslutter tidlig
+   paa sider uten kontaktskjema. Finnes bare paa gjennomgangssiden. */
+(function () {
+  "use strict";
+
+  var stopp = document.querySelectorAll(".gj-stopp");
+  var bilder = document.querySelectorAll(".gj-bilde");
+  if (!stopp.length || !bilder.length || !("IntersectionObserver" in window)) return;
+
+  function vis(nr) {
+    bilder.forEach(function (b) {
+      b.classList.toggle("er-aktiv", b.getAttribute("data-stopp") === nr);
+    });
+  }
+
+  /* Baandet er en tynn stripe midt i vinduet. Stoppet som ligger over den
+     styrer bildet - da byttes det naar teksten er der oyet er, ikke naar
+     seksjonen saavidt titter inn nederst. */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) vis(e.target.getAttribute("data-stopp"));
+    });
+  }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+
+  stopp.forEach(function (s) { io.observe(s); });
+})();
