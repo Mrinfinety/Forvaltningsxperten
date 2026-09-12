@@ -748,3 +748,147 @@ main.wrap{
   button:active{ transform: none; }
   *, *::before, *::after{ transition: none !important; }
 }
+
+/* ---------- Gjennomgang av bygget ---------- */
+
+/* Fotoet ligger fast og fyller skjermen mens tekstflatene ruller oppaa det.
+   Bildene toner over i hverandre etter hvor langt du har scrollet, ikke i
+   trinn - det er JS som setter opacity og skala per bilde, se site.js.
+   Uten JS blir det forste bildet staaende. */
+.gjennomgang{ position: relative; }
+
+.gj-bilder{
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #14110f;
+}
+
+.gj-bilde{
+  position: absolute;
+  inset: 0;
+  background-image: var(--foto);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.gj-bilde[data-stopp="1"]{ opacity: 1; }
+
+@media (max-width: 899px){
+  .gj-bilde{ background-image: var(--foto-m); }
+}
+
+/* Slor over fotoet, ellers er teksten prisgitt motivet */
+.gj-bilder::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(20, 17, 15, 0.52),
+    rgba(20, 17, 15, 0.34) 42%,
+    rgba(20, 17, 15, 0.58)
+  );
+}
+
+/* Teksten trekkes opp oppaa det faste bildet */
+.gj-tekst{
+  position: relative;
+  margin-top: -100vh;
+}
+
+.gj-stopp{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 12vh 20px;
+}
+/* Skillelinjen mellom seksjoner ville lagt seg tvers over fotoet */
+.gj-stopp + .gj-stopp{ border-top: 0; }
+
+.gj-panel{
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px 30px 34px;
+  background: rgba(18, 15, 13, 0.80);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.gj-nr{
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #b3a999;
+  margin: 0 0 10px;
+}
+
+.gj-liste{
+  margin: 20px 0 0;
+  padding-left: 0;
+  list-style: none;
+}
+.gj-liste li{
+  position: relative;
+  padding-left: 22px;
+  margin-bottom: 9px;
+  color: #cdc4b7;
+}
+/* Kort strek i stedet for kule - samme sprak som logolinjen */
+.gj-liste li::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 10px;
+  height: 1px;
+  background: #8a8279;
+}
+
+@media (max-width: 899px){
+  .gj-panel{ padding: 26px 22px 28px; }
+  .gj-stopp{ padding: 10vh 16px; }
+}
+
+/* Innledningsanimasjonen lenger oppe faser inn h1 og de TO forste avsnittene
+   i forste seksjon paa siden. Forste stopp har tre avsnitt (nummeret er ogsaa
+   en <p>), og det tredje ble staaende paa opacity 0 for alltid. Gjennomgangen
+   melder seg av den animasjonen - seksjonen faser uansett inn som helhet. */
+.js main section.gj-stopp > p,
+.js main section.gj-stopp .gj-panel > p{ opacity: 1; transform: none; }
+
+/* Toppen paa gjennomgangen: ingen foto, bare overskriften paa sidens morke.
+   Egen klasse sa personvernsidens hero--ren staar urort. */
+.gj-topp .hero-tekst{
+  padding-top: 38px;
+  padding-bottom: 54px;
+}
+
+/* Tynn strek øverst som fylles gjennom gjennomgangen. Åtte skjermhøyder er
+   lenge å scrolle uten å vite hvor langt det er igjen. Vises først når
+   gjennomgangen har tatt over skjermen. */
+.gj-fremdrift{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.14);
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+}
+.gj-fremdrift.er-inne{ opacity: 1; }
+.gj-fremdrift span{
+  display: block;
+  height: 100%;
+  background: #ddd5c9;
+  transform: scaleX(0);
+  transform-origin: left;
+}
