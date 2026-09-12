@@ -742,45 +742,80 @@ main.wrap{
 
 /* ---------- Gjennomgang av bygget ---------- */
 
-/* Mobil forst: hvert stopp staar paa sitt eget foto. Bildestabelen er
-   display:none her, og da lastes de store bildene ikke i det hele tatt -
-   derfor er bildene bakgrunner og ikke <img>. */
-.gj-stopp{
-  position: relative;
-  isolation: isolate;
-  padding: 52px 20px 56px;
-  background-image: var(--foto-m);
-  background-size: cover;
-  background-position: center;
-}
-.gj-stopp > *{
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+/* Fotoet ligger fast og fyller skjermen mens tekstflatene ruller oppaa det.
+   Bildene toner over i hverandre etter hvor langt du har scrollet, ikke i
+   trinn - det er JS som setter opacity og skala per bilde, se site.js.
+   Uten JS blir det forste bildet staaende. */
+.gjennomgang{ position: relative; }
+
+.gj-bilder{
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  background: #14110f;
 }
 
-/* Slor som gjor teksten lesbar uansett motiv. Ligger over bakgrunnen,
-   under innholdet. */
-.gj-stopp::before{
+.gj-bilde{
+  position: absolute;
+  inset: 0;
+  background-image: var(--foto);
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.gj-bilde[data-stopp="1"]{ opacity: 1; }
+
+@media (max-width: 899px){
+  .gj-bilde{ background-image: var(--foto-m); }
+}
+
+/* Slor over fotoet, ellers er teksten prisgitt motivet */
+.gj-bilder::after{
   content: "";
   position: absolute;
   inset: 0;
-  z-index: -1;
   background: linear-gradient(
     to bottom,
-    rgba(20, 17, 15, 0.86),
-    rgba(20, 17, 15, 0.92)
+    rgba(20, 17, 15, 0.52),
+    rgba(20, 17, 15, 0.34) 42%,
+    rgba(20, 17, 15, 0.58)
   );
 }
 
-.gj-bilder{ display: none; }
+/* Teksten trekkes opp oppaa det faste bildet */
+.gj-tekst{
+  position: relative;
+  margin-top: -100vh;
+}
+
+.gj-stopp{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 12vh 20px;
+}
+/* Skillelinjen mellom seksjoner ville lagt seg tvers over fotoet */
+.gj-stopp + .gj-stopp{ border-top: 0; }
+
+.gj-panel{
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px 30px 34px;
+  background: rgba(18, 15, 13, 0.80);
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
 
 .gj-nr{
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.72rem;
   font-weight: 600;
-  color: #a79d8f;
+  color: #b3a999;
   margin: 0 0 10px;
 }
 
@@ -793,7 +828,7 @@ main.wrap{
   position: relative;
   padding-left: 22px;
   margin-bottom: 9px;
-  color: #c8bfb2;
+  color: #cdc4b7;
 }
 /* Kort strek i stedet for kule - samme sprak som logolinjen */
 .gj-liste li::before{
@@ -806,56 +841,14 @@ main.wrap{
   background: #8a8279;
 }
 
-/* Brede skjermer: bildet staar fast i venstre spalte mens teksten ruller
-   i hoyre. To spalter er hele poenget - da kan ikke teksten legge seg
-   oppaa bildet slik den ville gjort med en klistret stripe over. */
-@media (min-width: 900px){
-  .gjennomgang{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: start;
-  }
-
-  .gj-bilder{
-    display: block;
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    overflow: hidden;
-    background: #1b1714;
-  }
-
-  .gj-bilde{
-    position: absolute;
-    inset: 0;
-    background-image: var(--foto);
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    transition: opacity 0.7s ease;
-  }
-  .gj-bilde.er-aktiv{ opacity: 1; }
-
-  /* Uten JS blir det forste bildet staaende. Teksten er innholdet. */
-
-  .gj-stopp{
-    background-image: none;
-    padding: 10vh 52px;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  .gj-stopp::before{ display: none; }
-  .gj-stopp > *{ max-width: 480px; margin-left: 0; margin-right: 0; }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .gj-bilde{ transition: none; }
+@media (max-width: 899px){
+  .gj-panel{ padding: 26px 22px 28px; }
+  .gj-stopp{ padding: 10vh 16px; }
 }
 
 /* Innledningsanimasjonen lenger oppe faser inn h1 og de TO forste avsnittene
    i forste seksjon paa siden. Forste stopp har tre avsnitt (nummeret er ogsaa
    en <p>), og det tredje ble staaende paa opacity 0 for alltid. Gjennomgangen
    melder seg av den animasjonen - seksjonen faser uansett inn som helhet. */
-.js main section.gj-stopp > p{ opacity: 1; transform: none; }
+.js main section.gj-stopp > p,
+.js main section.gj-stopp .gj-panel > p{ opacity: 1; transform: none; }

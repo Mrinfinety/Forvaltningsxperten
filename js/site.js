@@ -77,31 +77,76 @@
       });
   });
 })();
+/* Gjennomgangen av bygget. Bildene loser seg opp i hverandre etter hvor langt
+   du har scrollet, ikke i trinn - det skal kjennes som en film du ruller
+   gjennom, ikke som et lysbildeskift.
 
-/* Gjennomgangen av bygget: bytter det faste bildet etter hvilket stopp som
-   passerer midten av skjermen. Egen IIFE fordi skriptet over avslutter tidlig
-   paa sider uten kontaktskjema. Finnes bare paa gjennomgangssiden. */
+   Naavaerende stopp er det siste som har passert midten av skjermen. Hvor
+   langt vi er kommet videre fra det, styrer oppløsningen til neste. Kurven
+   har platå i begge ender: bildet staar rent mesteparten av tiden og loser
+   seg opp bare i midtpartiet. Uten platået ligger to bilder oppaa hverandre
+   hele veien, og ingen av dem blir sett.
+
+   Egen IIFE fordi skriptet over avslutter tidlig paa sider uten
+   kontaktskjema. */
 (function () {
   "use strict";
 
-  var stopp = document.querySelectorAll(".gj-stopp");
-  var bilder = document.querySelectorAll(".gj-bilde");
-  if (!stopp.length || !bilder.length || !("IntersectionObserver" in window)) return;
+  var stopp = Array.prototype.slice.call(document.querySelectorAll(".gj-stopp"));
+  var bilder = Array.prototype.slice.call(document.querySelectorAll(".gj-bilde"));
+  if (!stopp.length || stopp.length !== bilder.length) { return; }
 
-  function vis(nr) {
-    bilder.forEach(function (b) {
-      b.classList.toggle("er-aktiv", b.getAttribute("data-stopp") === nr);
-    });
+  var roligere = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var planlagt = false;
+
+  function tegn() {
+    planlagt = false;
+    var h = window.innerHeight;
+    var avstand = [];
+    var i;
+
+    for (i = 0; i < stopp.length; i++) {
+      var r = stopp[i].getBoundingClientRect();
+      /* avstand fra stoppets midte til skjermens midte, malt i skjermhoyder */
+      var d = (r.top + r.height / 2 - h / 2) / h;
+      if (d > 1.5) { d = 1.5; }
+      if (d < -1.5) { d = -1.5; }
+      avstand.push(d);
+    }
+
+    var n = 0;
+    for (i = 0; i < avstand.length; i++) {
+      if (avstand[i] <= 0) { n = i; }
+    }
+
+    var t = -avstand[n];
+    if (t < 0) { t = 0; }
+    if (t > 1) { t = 1; }
+
+    var b = (t - 0.32) / 0.36;
+    if (b < 0) { b = 0; }
+    if (b > 1) { b = 1; }
+    b = b * b * (3 - 2 * b);
+
+    for (i = 0; i < bilder.length; i++) {
+      var o = 0;
+      if (i === n) { o = 1 - b; }
+      else if (i === n + 1) { o = b; }
+      bilder[i].style.opacity = o.toFixed(3);
+      if (!roligere.matches) {
+        /* sakte drift saa bildet aldri staar helt stille */
+        bilder[i].style.transform = "scale(" + (1.06 - avstand[i] * 0.05).toFixed(4) + ")";
+      }
+    }
   }
 
-  /* Baandet er en tynn stripe midt i vinduet. Stoppet som ligger over den
-     styrer bildet - da byttes det naar teksten er der oyet er, ikke naar
-     seksjonen saavidt titter inn nederst. */
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) vis(e.target.getAttribute("data-stopp"));
-    });
-  }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+  function planlegg() {
+    if (planlagt) { return; }
+    planlagt = true;
+    window.requestAnimationFrame(tegn);
+  }
 
-  stopp.forEach(function (s) { io.observe(s); });
+  window.addEventListener("scroll", planlegg, { passive: true });
+  window.addEventListener("resize", planlegg);
+  tegn();
 })();
