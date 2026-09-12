@@ -855,13 +855,6 @@ main.wrap{
   .gj-stopp{ padding: 10vh 16px; }
 }
 
-/* Innledningsanimasjonen lenger oppe faser inn h1 og de TO forste avsnittene
-   i forste seksjon paa siden. Forste stopp har tre avsnitt (nummeret er ogsaa
-   en <p>), og det tredje ble staaende paa opacity 0 for alltid. Gjennomgangen
-   melder seg av den animasjonen - seksjonen faser uansett inn som helhet. */
-.js main section.gj-stopp > p,
-.js main section.gj-stopp .gj-panel > p{ opacity: 1; transform: none; }
-
 /* Toppen paa gjennomgangen: ingen foto, bare overskriften paa sidens morke.
    Egen klasse sa personvernsidens hero--ren staar urort. */
 .gj-topp .hero-tekst{
