@@ -457,7 +457,17 @@ button:disabled:hover{
 .js main section.vist .deltjeneste:nth-of-type(7){ transition-delay: 0.41s; }
 .js main section.vist .deltjeneste:nth-of-type(8){ transition-delay: 0.47s; }
 
-/* Rolig anslag på innledningen: overskrift først, så ingressen. */
+/* Rolig anslag på innledningen: overskrift først, så ingressen.
+
+   NB: regelen traff mer enn innledningen. «Første seksjon» er første
+   section i SIN forelder, og flere sider har en seksjon som treffer uten
+   å være noen ingress – FAQ-en på tjenester, «Det som styrer prisen» på
+   prissiden. De skjulte alle avsnitt og slo bare på igjen nummer én og to,
+   så avsnitt tre og utover ble stående usynlige for alltid. Teksten lå i
+   HTML-en og ble indeksert, men ingen så den.
+
+   Derfor slås nå ALLE avsnitt på igjen. De to første beholder den
+   forskjøvede rekkefølgen; resten kommer like etter. */
 .js main section:first-of-type h1,
 .js main section:first-of-type > p{
   opacity: 0;
@@ -467,12 +477,11 @@ button:disabled:hover{
 .js main section:first-of-type.vist h1{
   opacity: 1; transform: none; transition-delay: 0.08s;
 }
-.js main section:first-of-type.vist > p:nth-of-type(1){
-  opacity: 1; transform: none; transition-delay: 0.22s;
+.js main section:first-of-type.vist > p{
+  opacity: 1; transform: none; transition-delay: 0.4s;
 }
-.js main section:first-of-type.vist > p:nth-of-type(2){
-  opacity: 1; transform: none; transition-delay: 0.34s;
-}
+.js main section:first-of-type.vist > p:nth-of-type(1){ transition-delay: 0.22s; }
+.js main section:first-of-type.vist > p:nth-of-type(2){ transition-delay: 0.34s; }
 
 /* Kortene ligger som egne flater over sideflaten – dybde gjennom
    høydeforskjell, ikke gjennom effekter. Løftes ved peking. */
