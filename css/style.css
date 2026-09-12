@@ -96,63 +96,53 @@ li{ margin-bottom: 8px; }
   border-bottom: 1px dashed #a3987f;
 }
 
-/* ---------- Topp: logoboksen med menyen stående på logolinjen ---------- */
+/* ---------- Topp: egen lys stripe med merket midtstilt ---------- */
 
+/* Merket står på en rolig, lys flate over fotoet i stedet for oppå det.
+   Oppbygningen følger logoutkastet: Fx, kort strek, navnet – og menyen
+   nederst, der fagområdene sto i utkastet. */
 .site-header{
-  padding: 26px 0 24px;
-  overflow-x: hidden;
-  overflow-x: clip; /* klipper logolinjens forlengelse så den ikke gir horisontal scroll */
+  background: #f1eee8;
+  padding: 28px 0 22px;
+  border-bottom: 1px solid #ddd6ca;
 }
 
-/* Fx-boksen og menyen på én rad; menypunktene står på linjen som
-   kommer ut fra boksens nedre høyre hjørne. */
-.header-top{
+.merke{
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  align-items: center;
 }
 
-.brand-logo{
-  display: block;
-  flex: none;
+.brand{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
 }
 
-/* Fx-merket i antikva med hul kontur, som ordmerket under. Satt som
-   tekst og ikke SVG: da flukter venstrekanten med navnet nedenfor
-   uansett hvilken systemserif nettleseren velger. */
+/* Fx i antikva med hul kontur. Satt som tekst og ikke SVG: ingenting
+   klippes av en for trang viewBox, og merket skalerer med skriften. */
 .logo-mark{
-  display: block;
   font-family: ui-serif, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
-  font-size: 68px;
+  font-size: 58px;
   font-weight: 700;
-  line-height: 0.95;
+  line-height: 1;
   letter-spacing: 0.01em;
   color: transparent;
-  -webkit-text-stroke: 1.6px #f2eee6;
-  /* drop-shadow følger konturen; text-shadow ville tegnet skyggen av
-     hele bokstavflaten og fylt igjen det hule. */
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.55));
+  -webkit-text-stroke: 1.7px #2b2622;
 }
 
-.site-nav{
-  position: relative;
-  display: flex;
-  align-items: flex-end;
-  gap: 30px;
-  padding: 0 12px 12px 22px;
-}
-
-/* Logolinjen: går like under Fx-merket og videre ut til høyre forbi
-   menyen, som står på den. Tegnes rolig ved innlasting. */
-.site-nav::after{
-  content: "";
-  position: absolute;
-  left: -126px;  /* forbi Fx-merket og litt ut på venstresiden */
-  right: -40px;  /* like langt ut på høyresiden forbi menyen */
-  bottom: 8px;   /* like under bunnen av Fx-bokstavene */
-  border-top: 3px solid #6f665c;
-  z-index: 2;    /* tegnes oppå Fx-boksen så linjen går gjennom den */
+/* Kort strek mellom merket og navnet. Tegnes rolig ut fra midten ved
+   innlasting – samme dempede bevegelse som logolinjen hadde før. */
+.logo-strek{
+  display: block;
+  width: 96px;
+  max-width: 45vw;
+  height: 1px;
+  margin: 13px 0 15px;
+  background: #8f887e;
   transform: scaleX(0);
-  transform-origin: left;
+  transform-origin: center;
   animation: linje-tegn 1.1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.3s forwards;
 }
 
@@ -160,24 +150,50 @@ li{ margin-bottom: 8px; }
   to{ transform: scaleX(1); }
 }
 
+.brand-name{
+  display: block;
+  font-family: ui-serif, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  /* Sperringen henger på etter siste bokstav og ville dyttet ordmerket
+     et halvt mellomrom til venstre. Trekkes fra så det står i midten. */
+  margin-right: -0.3em;
+  font-size: clamp(0.95rem, 2.9vw, 1.25rem);
+  font-weight: 600;
+  color: #2b2622;
+  white-space: nowrap;
+}
+.brand:hover .brand-name{ color: #000000; }
+
+/* Menyen står der fagområdene sto i utkastet: samme sperring, samme
+   dempede grå, prikk mellom punktene. */
+.site-nav{
+  display: flex;
+  align-items: baseline;
+  margin-top: 14px;
+  margin-right: -0.26em;
+}
+
 .site-nav a{
   position: relative;
   text-decoration: none;
-  color: #e6dfd4;
-  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.26em;
+  font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
+  color: #6d665e;
   white-space: nowrap;
 }
-.site-nav a:hover{ color: #ffffff; }
+.site-nav a:hover{ color: #2b2622; }
+.site-nav a[aria-current="page"]{ color: #2b2622; }
 
 /* Diskré strek som vokser frem under menypunktet */
 .site-nav a::after{
   content: "";
   position: absolute;
   left: 0;
-  right: 0;
-  bottom: -5px;
+  right: 0.26em;
+  bottom: -6px;
   height: 1px;
   background: currentColor;
   transform: scaleX(0);
@@ -185,64 +201,29 @@ li{ margin-bottom: 8px; }
   transition: transform 0.3s ease;
 }
 .site-nav a:hover::after{ transform: scaleX(1); }
-.site-nav a[aria-current="page"]{ color: #ffffff; }
 .site-nav a[aria-current="page"]::after{ transform: scaleX(1); }
 
-/* Navnet under linjen */
-.brand{
-  display: inline-block;
-  text-decoration: none;
+.site-nav .skille{
+  margin: 0 0.85em 0 0.6em;
+  font-size: 0.72rem;
+  color: #a79f94;
 }
 
-/* Ordmerket i samme antikva som Fx, med luft mellom bokstavene.
-   Sto tidligere i sans for å matche det geometriske Fx-merket –
-   nå som merket er antikva, følger navnet etter. */
-.brand-name{
-  display: block;
-  margin-top: 16px;
-  font-family: ui-serif, "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: #f2eee6;
-  white-space: nowrap;
-}
-
-/* Fagområdene under navnet, tilbaketrukket i grått */
-.brand-tagline{
-  display: block;
-  margin-top: 7px;
-  text-transform: uppercase;
-  letter-spacing: 0.34em;
-  font-size: 0.66rem;
-  font-weight: 500;
-  color: #c8bfb2;
-  white-space: nowrap;
-}
-.brand:hover .brand-name{ color: #ffffff; }
-
-@media (max-width: 480px){
-  .logo-mark{ font-size: 48px; -webkit-text-stroke-width: 1.3px; }
-  .site-nav{ gap: 18px; padding: 0 8px 10px 14px; }
-  /* På mobil: dropp transform/animasjon på linjen. En transformert
-     hårlinje over en backdrop-filter-header kan forsvinne ved scroll
-     og ikke males på nytt. Statisk linje er robust. */
-  .site-nav::after{ left: -96px; bottom: 7px; animation: none; transform: none; }
-  .site-nav a{ font-size: 0.98rem; }
-  .brand-name{
-    font-size: 0.9rem;
-    letter-spacing: 0.18em;
-  }
-  .brand-tagline{
-    font-size: 0.6rem;
-    letter-spacing: 0.26em;
-  }
+@media (max-width: 560px){
+  .site-header{ padding: 26px 0 20px; }
+  .logo-mark{ font-size: 50px; -webkit-text-stroke-width: 1.5px; }
+  .logo-strek{ width: 82px; margin: 11px 0 13px; }
+  .brand-name{ letter-spacing: 0.2em; margin-right: -0.2em; }
+  .site-nav{ margin-top: 13px; margin-right: -0.18em; }
+  .site-nav a{ font-size: 0.63rem; letter-spacing: 0.18em; }
+  .site-nav a::after{ right: 0.18em; }
+  .site-nav .skille{ margin: 0 0.55em 0 0.4em; font-size: 0.63rem; }
 }
 
 @media (max-width: 360px){
-  .site-nav{ gap: 13px; padding: 0 6px 10px 10px; }
-  .site-nav a{ font-size: 0.88rem; }
+  .logo-mark{ font-size: 45px; }
+  .site-nav a{ font-size: 0.58rem; letter-spacing: 0.14em; }
+  .site-nav .skille{ margin: 0 0.4em 0 0.28em; }
 }
 
 /* ---------- Innhold: mørk gjennomsiktig firkant rundt teksten ---------- */
@@ -546,7 +527,7 @@ body{ background: #221d19; }
   background-position: center;
   background-size: cover;
 }
-.hero--stor{ min-height: 84vh; }
+.hero--stor{ min-height: 66vh; }
 .hero--liten{ min-height: 42vh; }
 /* Uten foto – brukes på juridiske sider der bilde ikke hører hjemme */
 .hero--ren{ min-height: 0; background-image: none; background: #2a2521; }
@@ -567,14 +548,11 @@ body{ background: #221d19; }
   );
 }
 .hero > *{ position: relative; z-index: 2; }
-.hero .site-header{
-  background: transparent;
-  -webkit-backdrop-filter: none; backdrop-filter: none;
-  border-bottom: 0;
-}
 
 .hero-tekst{
   margin-top: auto;
+  /* Luft ned fra logostripa når teksten fyller hele toppbildet */
+  padding-top: 32px;
   padding-bottom: 74px;
   max-width: 940px;
   /* Må ha eksplisitt bredde: auto-margene fra .wrap gjør at et flex-barn
@@ -595,9 +573,6 @@ body{ background: #221d19; }
    Gjelder ikke den rene toppen på personvernsiden. */
 .hero:not(.hero--ren) .hero-tekst h1,
 .hero:not(.hero--ren) .hero-tekst p,
-.hero:not(.hero--ren) .brand-name,
-.hero:not(.hero--ren) .brand-tagline,
-.hero:not(.hero--ren) .site-nav a,
 .band h2,
 .band p{
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45), 0 3px 16px rgba(0, 0, 0, 0.55);
@@ -730,7 +705,7 @@ main.wrap{
   main.wrap{ padding: 0; margin: 0; border-radius: 0; }
   .innhold{ padding: 0 22px; }
   .hero{ min-height: 56vh; }
-  .hero--stor{ min-height: 72vh; }
+  .hero--stor{ min-height: 62vh; }
   .hero--liten{ min-height: 38vh; }
   .hero-tekst{ padding-bottom: 46px; }
   .band{ min-height: 340px; }
